@@ -81,9 +81,41 @@ h2 {
     padding-bottom: 5px;
 }
 
-#about p {
+/* About Section Flexbox for Text and Poster Layout */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text p {
     font-size: 18px;
     color: #555;
+    margin-bottom: 15px;
+}
+
+.about-poster {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.about-poster img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.about-poster img:hover {
+    transform: scale(1.02);
 }
 
 .services {
@@ -180,12 +212,23 @@ footer {
 
 <section id="about">
     <h2>About Us</h2>
-    <p>
-        Welcome to Pin2 Kumar Photocopy & Online Works. 
-        We provide fast, reliable, and high-quality photocopy, printing, online form filling, 
-        document scanning, typing, lamination, and a wide variety of essential digital services. 
-        Visit us for prompt and hassle-free support with all your documentation needs.
-    </p>
+    <div class="about-container">
+        <div class="about-text">
+            <p>
+                Welcome to Pin2 Kumar Photocopy & Online Works. 
+                We provide fast, reliable, and high-quality photocopy, printing, online form filling, 
+                document scanning, typing, lamination, and a wide variety of essential digital services.
+            </p>
+            <p>
+                Visit us for prompt and hassle-free support with all your documentation and internet needs. 
+                We ensure complete customer satisfaction with accurate work and affordable rates.
+            </p>
+        </div>
+        <div class="about-poster">
+            <!-- यहाँ आपका नया पोस्टर दिखेगा -->
+            <img src="poster.png" alt="Pin2 Kumar Photocopy Poster">
+        </div>
+    </div>
 </section>
 
 <section id="services">
