@@ -1,453 +1,417 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pin2 Kumar Photocopy & Online Works</title>
 
+<!-- Preeti Font Loading -->
 <style>
+@font-face {
+    font-family: 'Preeti';
+    src: url('https://fonts.cdnfonts.com/s/72228/Preeti.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    background: #f8f9fa;
+    background: #f4f6f9;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 header {
     background: linear-gradient(135deg, #0057b8, #e60023);
     color: white;
     text-align: center;
-    padding: 80px 20px;
-    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+    padding: 40px 20px;
 }
 
-header h1 {
-    font-size: 42px;
-    margin-bottom: 12px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+header h1 { font-size: 32px; margin-bottom: 5px; }
+nav { background: #003f8a; text-align: center; padding: 12px; position: sticky; top: 0; z-index: 1000; }
+nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: 600; }
+section { padding: 30px 5%; max-width: 1200px; margin: 0 auto; }
+h2 { color: #0057b8; margin-bottom: 20px; border-bottom: 3px solid #e60023; display: inline-block; padding-bottom: 5px; }
 
-header p {
-    font-size: 20px;
-    opacity: 0.9;
-    font-weight: 300;
-}
-
-nav {
-    background: #003f8a;
-    text-align: center;
-    padding: 15px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: 600;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #ffcc00;
-}
-
-section {
-    padding: 70px 10%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-h2 {
-    color: #0057b8;
-    margin-bottom: 25px;
-    font-size: 28px;
-    border-bottom: 3px solid #e60023;
-    display: inline-block;
-    padding-bottom: 5px;
-}
-
-.about-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: center;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-text p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.about-poster {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-}
-
-.about-poster img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.card {
+.app-center-box {
     background: white;
-    padding: 25px 20px;
+    padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
-    font-weight: 600;
-    color: #003f8a;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-left: 4px solid #0057b8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    border: 2px solid #0057b8;
+    margin-bottom: 30px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border-left-color: #e60023;
-}
-
-.form-btn {
+.main-app-btn {
     background: #e60023;
     color: white;
     border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 13px;
+    padding: 12px 35px;
+    font-size: 18px;
     font-weight: bold;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
-.form-btn:hover {
-    background: #b3001b;
+.main-app-btn:hover { background: #0057b8; }
+
+.forms-menu-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    background: #eef3f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px dashed #0057b8;
 }
 
-/* Digital Forms Section Styling */
+.form-menu-card { background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.form-menu-card p { font-weight: bold; margin-bottom: 10px; color: #333; }
+.select-btn { background: #0057b8; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+
+/* Full Form Styling */
 .form-section {
     display: none;
     background: white;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    border: 2px solid #e60023;
 }
+
+.form-title { text-align: center; color: #e60023; margin-bottom: 5px; font-size: 24px; }
+.form-subtitle { text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 14px; }
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
     margin-bottom: 15px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
+.form-group { display: flex; flex-direction: column; }
+label { font-weight: bold; margin-bottom: 4px; font-size: 12px; color: #444; }
+input, select { padding: 6px 10px; border: 1px solid #aaa; border-radius: 4px; font-size: 13px; width: 100%; }
+
+.nepali-preeti {
+    font-family: 'Preeti', 'Times New Roman', sans-serif !important;
+    font-size: 18px !important;
 }
 
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #555;
-}
+.header-table { width: 100%; margin-bottom: 15px; border-collapse: collapse; }
+.header-table th, .header-table td { border: 1px solid #aaa; padding: 6px; font-size: 12px; }
+.header-table th { background-color: #f2f2f2; text-align: left; }
 
-input, select, textarea {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 15px;
-}
-
-.header-table {
-    width: 100%;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-}
-
-.header-table th, .header-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    font-size: 13px;
-}
-
-.print-btn-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.print-btn {
+.section-divider {
     background: #0057b8;
     color: white;
-    border: none;
-    padding: 10px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.contact {
-    background: white;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.contact p {
-    margin-bottom: 15px;
-    font-size: 17px;
-}
-
-.contact p strong {
-    color: #0057b8;
-}
-
-footer {
-    background: #003f8a;
-    color: white;
-    text-align: center;
-    padding: 25px;
+    padding: 5px 10px;
     font-size: 14px;
-    margin-top: 40px;
-}
-
-.whatsapp {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    padding: 15px 25px;
-    border-radius: 50px;
+    margin: 15px 0 10px 0;
     font-weight: bold;
-    z-index: 9999;
+    border-radius: 3px;
 }
 
+.print-btn-container { text-align: center; margin-top: 25px; }
+.print-btn { background: #003f8a; color: white; border: none; padding: 10px 30px; font-size: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; }
+.close-btn { background: #333; color: white; border: none; padding: 5px 12px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+
+/* Premium Layout For Legal A4 Printing */
 @media print {
     body * { display: none; }
     .form-section, .form-section * { display: block; }
-    .form-section { display: block !important; box-shadow: none; padding: 0; }
-    .print-btn-container, .close-btn { display: none !important; }
-    input, select { border: none; border-bottom: 1px dashed #000; padding: 2px; width: 100%; }
-    .form-grid { display: grid !important; }
-    .header-table { display: table !important; }
+    .form-section {
+        display: block !important;
+        position: absolute; top: 0; left: 0; width: 100%;
+        border: none !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important;
+    }
+    input, select {
+        border: none !important; border-bottom: 1px dashed #000 !important;
+        padding: 1px !important; background: transparent !important; color: #000 !important; font-size: 13px !important;
+    }
+    .nepali-preeti { font-family: 'Preeti' !important; font-size: 18px !important; }
+    .form-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
+    .header-table { display: table !important; width: 100% !important; }
     .header-table tr { display: table-row !important; }
-    .header-table td, .header-table th { display: table-cell !important; }
+    .header-table td, .header-table th { display: table-cell !important; border: 1px solid #000 !important; padding: 4px !important; color: #000 !important; }
+    .section-divider { background: #f2f2f2 !important; color: #000 !important; border: 1px solid #000 !important; margin: 10px 0 8px 0 !important; padding: 3px !important; font-size: 13px !important; }
+    .close-btn, .print-btn-container { display: none !important; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
     <h1>Pin2 Kumar Photocopy & Online Works</h1>
-    <p>Your Trusted Photocopy & Online Service Center in Kudiya</p>
+    <p>Your Trusted Personal Event Registration & Digital Service Center</p>
 </header>
 
 <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
+    <a href="#online-application">Online Application</a>
     <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-    <h2>About Us</h2>
-    <div class="about-container">
-        <div class="about-text">
-            <p>Welcome to Pin2 Kumar Photocopy & Online Works. We provide fast, reliable, and high-quality digital services.</p>
-        </div>
-        <div class="about-poster">
-            <img src="poster.png" alt="Pin2 Kumar Photocopy Poster">
-        </div>
-    </div>
-</section>
-
-<section id="services">
-    <h2>Our Services & Online Entries</h2>
-    <div class="services">
-        <div class="card">Photocopy (B/W & Color)</div>
-        <div class="card">Printing Services</div>
+<section id="online-application">
+    <h2>Digital Services Portal</h2>
+    
+    <div class="app-center-box">
+        <p style="font-size: 15px; margin-bottom: 12px; color: #555;">व्यक्तिगत घटना दर्ता फारामहरू भर्नका लागि तलको बटनमा क्लिक गर्नुहोस् ।</p>
+        <button class="main-app-btn" onclick="toggleAppMenu()">💻 Open Online Application Center</button>
         
-        <!-- घटना दर्ता फारामहरू -->
-        <div class="card">
-            <span>जन्मको सूचना (अनुसूची-२)</span>
-            <button class="form-btn" onclick="showForm('birthForm')">Open Form 📄</button>
+        <div id="formsMenu" class="forms-menu-grid">
+            <div class="form-menu-card"><p>जन्मको सूचना फाराम</p><button class="select-btn" onclick="showForm('birthForm')">खोल्नुहोस् 📄</button></div>
+            <div class="form-menu-card"><p>मृत्युको सूचना फाराम</p><button class="select-btn" onclick="showForm('deathForm')">खोल्नुहोस् 📄</button></div>
+            <div class="form-menu-card"><p>विवाहको सूचना फाराम</p><button class="select-btn" onclick="showForm('marriageForm')">खोल्नुहोस् 📄</button></div>
+            <div class="form-menu-card"><p>बसाई सराई सूचना फाराम</p><button class="select-btn" onclick="showForm('migrationForm')">खोल्नुहोस् 📄</button></div>
+            <div class="form-menu-card"><p>सम्बन्ध बिच्छेद फाराम</p><button class="select-btn" onclick="showForm('divorceForm')">खोल्नुहोस् 📄</button></div>
         </div>
-        <div class="card">
-            <span>मृत्युको सूचना (अनुसूची-१)</span>
-            <button class="form-btn" onclick="showForm('deathForm')">Open Form 📄</button>
-        </div>
-        <div class="card">
-            <span>विवाहको सूचना (अनुसूची-४)</span>
-            <button class="form-btn" onclick="showForm('marriageForm')">Open Form 📄</button>
-        </div>
-        <div class="card">
-            <span>बसाई सराई सूचना फाराम</span>
-            <button class="form-btn" onclick="showForm('migrationForm')">Open Form 📄</button>
-        </div>
-        <div class="card">
-            <span>सम्बन्ध बिच्छेद फाराम</span>
-            <button class="form-btn" onclick="showForm('divorceForm')">Open Form 📄</button>
-        </div>
-
-        <div class="card">Lamination</div>
-        <div class="card">Passport Size Photos</div>
-        <div class="card">Typing & Internet Services</div>
     </div>
 
-    <!-- ================= जन्म दर्ता फाराम ================= -->
+    <!-- ================= १. पूर्ण जन्म दर्ता फाराम ================= -->
     <div id="birthForm" class="form-section">
-        <button class="close-btn" onclick="closeForm('birthForm')" style="float:right; background:#333; color:white; border:none; padding:5px 10px; cursor:pointer;">Close X</button>
-        <p style="text-align: right; font-weight: bold;">अनुसूची-२ (नियम ५ सँग सम्बन्धित)</p>
-        <h2 style="text-align:center; display:block;">जन्मको सूचना फाराम</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p><strong>अनुसूची-२</strong> (नियम ५ सँग सम्बन्धित)</p>
+            <button class="close-btn" onclick="closeForm('birthForm')">Close X</button>
+        </div>
+        <h1 class="form-title">जन्मको सूचना फाराम</h1>
+        <p class="form-subtitle">(नयाँ शिशु जन्म दर्ताका लागि भरिने पूर्ण आधिकारिक विबरण)</p>
+        
+        <div class="section-divider">स्थानीय पञ्जिकाधिकारीले भर्ने खण्ड</div>
         <table class="header-table">
             <tr>
-                <td>अञ्चल: <input type="text"></td><td>जिल्ला: <input type="text"></td><td>गा.वि.स./न.पा.: <input type="text"></td><td>वडा नं.: <input type="text"></td>
+                <td>प्रदेश: <input type="text" class="nepali-preeti"></td>
+                <td>जिल्ला: <input type="text" class="nepali-preeti"></td>
+                <td>गा.पा / न.पा: <input type="text" class="nepali-preeti"></td>
+                <td>वडा नं: <input type="text"></td>
             </tr>
             <tr>
-                <td colspan="2">स्थानीय पञ्जिकाधिकारीको नाम: <input type="text"></td><td colspan="2">Name (English): <input type="text"></td>
+                <td colspan="2">स्थानीय पञ्जिकाधिकारीको नाम: <input type="text" class="nepali-preeti"></td>
+                <td>दर्ता नम्बर: <input type="text"></td>
+                <td>दर्ता मिति (वि.सं.): <input type="text" placeholder="२०८३-०१-०१"></td>
             </tr>
         </table>
-        <div class="form-grid">
-            <div class="form-group"><label>शिशुको नाम (नेपाली)</label><input type="text"></div>
-            <div class="form-group"><label>थर</label><input type="text"></div>
-            <div class="form-group"><label>Full Name (English)</label><input type="text"></div>
-            <div class="form-group"><label>जन्म मिति (वि.सं.)</label><input type="text" placeholder="YYYY-MM-DD"></div>
-        </div>
-        <div class="form-grid">
-            <div class="form-group"><label>बाबुको नाम थर</label><input type="text"></div>
-            <div class="form-group"><label>आमाको नाम थर</label><input type="text"></div>
-            <div class="form-group"><label>बाजेको नाम थर</label><input type="text"></div>
-            <div class="form-group"><label>नागरिकता नं (बाबु)</label><input type="text"></div>
-        </div>
-        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ फाराम प्रिन्ट गर्नुहोस्</button></div>
-    </div>
 
-    <!-- ================= मृत्यु दर्ता फाराम ================= -->
-    <div id="deathForm" class="form-section">
-        <button class="close-btn" onclick="closeForm('deathForm')" style="float:right; background:#333; color:white; border:none; padding:5px 10px; cursor:pointer;">Close X</button>
-        <p style="text-align: right; font-weight: bold;">अनुसूची-१ (नियम ५ सँग सम्बन्धित)</p>
-        <h2 style="text-align:center; display:block;">मृत्युको सूचना फाराम</h2>
-        <table class="header-table">
-            <tr>
-                <td>अञ्चल: <input type="text"></td><td>जिल्ला: <input type="text"></td><td>गा.वि.स./न.पा.: <input type="text"></td><td>वडा नं.: <input type="text"></td>
-            </tr>
-        </table>
+        <div class="section-divider">१. नवजात शिशुको विवरण</div>
         <div class="form-grid">
-            <div class="form-group"><label>मृतकको नाम थर (नेपाली)</label><input type="text"></div>
-            <div class="form-group"><label>Full Name (English)</label><input type="text"></div>
-            <div class="form-group"><label>मृत्यु भएको मिति (वि.सं.)</label><input type="text"></div>
-            <div class="form-group"><label>मृत्यु भएको स्थान</label><input type="text" placeholder="घर / अस्पताल"></div>
+            <div class="form-group"><label>पहिलो नाम (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>बिचको नाम (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>थर (Preeti)</label><input type="text" class="nepali-preeti"></div>
         </div>
         <div class="form-grid">
-            <div class="form-group"><label>बाजेको नाम थर</label><input type="text"></div>
-            <div class="form-group"><label>बाबु/आमाको नाम</label><input type="text"></div>
-            <div class="form-group"><label>पति/पत्नीको नाम (विवाहित भए)</label><input type="text"></div>
-            <div class="form-group"><label>मृत्युको कारण</label><input type="text"></div>
+            <div class="form-group"><label>First Name (English)</label><input type="text"></div>
+            <div class="form-group"><label>Middle Name (English)</label><input type="text"></div>
+            <div class="form-group"><label>Last Name (English)</label><input type="text"></div>
         </div>
-        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ फाराम प्रिन्ट गर्नुहोस्</button></div>
-    </div>
+        <div class="form-grid">
+            <div class="form-group"><label>जन्म मिति (वि.सं.)</label><input type="text" placeholder="साल-महिना-गते"></div>
+            <div class="form-group"><label>जन्म मिति (ई.सं.)</label><input type="text" placeholder="YYYY-MM-DD"></div>
+            <div class="form-group"><label>लिङ्ग</label><select><option>पुरुष (Male)</option><option>महिला (Female)</option><option>अन्य</option></select></div>
+        </div>
+        <div class="form-grid">
+            <div class="form-group"><label>जन्मको प्रकार</label><select><option>एकल (Single)</option><option>जुम्ल्याहा (Twins)</option><option>तित्ल्याहा</option></select></div>
+            <div class="form-group"><label>जन्मेको स्थान</label><select><option>घर (Home)</option><option>अस्पताल (Hospital)</option><option>स्वास्थ्य संस्था</option></select></div>
+            <div class="form-group"><label>शिशु जन्मेको ठेगाना (Preeti)</label><input type="text" class="nepali-preeti"></div>
+        </div>
 
-    <!-- ================= विवाह दर्ता फाराम ================= -->
-    <div id="marriageForm" class="form-section">
-        <button class="close-btn" onclick="closeForm('marriageForm')" style="float:right; background:#333; color:white; border:none; padding:5px 10px; cursor:pointer;">Close X</button>
-        <p style="text-align: right; font-weight: bold;">अनुसूची-४ (नियम १ सँग सम्बन्धित)</p>
-        <h2 style="text-align:center; display:block;">विवाहको सूचना फाराम</h2>
+        <div class="section-divider">२. शिशुको बाजेको विवरण</div>
         <div class="form-grid">
-            <div class="form-group"><label>विवाह भएको मिति (वि.सं.)</label><input type="text"></div>
-            <div class="form-group"><label>विवाह सम्पन्न भएको स्थान</label><input type="text"></div>
+            <div class="form-group" style="grid-column: span 2;"><label>बाजेको पूरा नाम थर (नेपालीमा - Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>Grandfather's Full Name (English)</label><input type="text"></div>
         </div>
+
+        <div class="section-divider">३. शिशुको माता र पिताको विवरण</div>
         <table class="header-table">
-            <tr>
-                <th>विवरण</th>
-                <th>दुलहाको विवरण (Groom)</th>
-                <th>दुलहीको विवरण (Bride)</th>
-            </tr>
-            <tr><td>नाम थर (नेपाली)</td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td>Full Name (English)</td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td>जन्म मिति</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><th>विवरण शीर्षक</th><th>पिताको विवरण (Father)</th><th>माताको विवरण (Mother)</th></tr>
+            <tr><td>पूरा नाम थर (नेपाली - Preeti)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>Full Name (English Capital)</td><td><input type="text"></td><td><input type="text"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td>बाबुको नाम थर</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>जारी मिति र जिल्ला</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>स्थायी ठेगाना (Preeti)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>शिशु जन्मदाको उमेर / मातृभाषा</td><td><input type="text" placeholder="उमेर / भाषा"></td><td><input type="text" placeholder="उमेर / भाषा"></td></tr>
+            <tr><td>विवाहित दर्ता नम्बर र मिति</td><td colspan="2" style="text-align: center;">दर्ता नं: <input type="text" style="width:30%;"> मिति: <input type="text" style="width:30%;"></td></tr>
         </table>
-        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ फाराम प्रिन्ट गर्नुहोस्</button></div>
+
+        <div class="section-divider">४. सूचकको विवरण (सूचना दिने व्यक्ति)</div>
+        <div class="form-grid">
+            <div class="form-group"><label>सूचकको नाम थर (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>शिशुसँगको नाता (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>नागरिकता प्रमाणपत्र नं.</label><input type="text"></div>
+        </div>
+
+        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ जन्म दर्ता फाराम प्रिन्ट गर्नुहोस्</button></div>
     </div>
 
-    <!-- ================= बसाई सराई फाराम ================= -->
-    <div id="migrationForm" class="form-section">
-        <button class="close-btn" onclick="closeForm('migrationForm')" style="float:right; background:#333; color:white; border:none; padding:5px 10px; cursor:pointer;">Close X</button>
-        <h2 style="text-align:center; display:block;">बसाई सराईको सूचना फाराम</h2>
-        <div class="form-grid">
-            <div class="form-group"><label>कहाँ सरी जाने ठेगाना</label><input type="text" placeholder="जिल्ला, न.पा, वडा"></div>
-            <div class="form-group"><label>कहाँबाट सरी आएको ठेगाना</label><input type="text"></div>
-            <div class="form-group"><label>घरमुलीको नाम थर</label><input type="text"></div>
-            <div class="form-group"><label>बसाई सराई गरेको मिति</label><input type="text"></div>
+    <!-- ================= २. पूर्ण मृत्यु दर्ता फाराम ================= -->
+    <div id="deathForm" class="form-section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p><strong>अनुसूची-१</strong> (नियम ५ सँग सम्बन्धित)</p>
+            <button class="close-btn" onclick="closeForm('deathForm')">Close X</button>
         </div>
-        <h3 style="margin-top:15px; text-align:left;">बसाई सराई गरी जाने व्यक्तिहरूको विवरण:</h3>
-        <table class="header-table">
-            <tr><th>क्र.स.</th><th>पुरा नाम थर</th><th>जन्म मिति</th><th>नागरिकता नं.</th><th>घरमुलीसँगको नाता</th></tr>
-            <tr><td>१</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td>२</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td>३</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        </table>
-        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ फाराम प्रिन्ट गर्नुहोस्</button></div>
-    </div>
-
-    <!-- ================= सम्बन्ध बिच्छेद फाराम ================= -->
-    <div id="divorceForm" class="form-section">
-        <button class="close-btn" onclick="closeForm('divorceForm')" style="float:right; background:#333; color:white; border:none; padding:5px 10px; cursor:pointer;">Close X</button>
-        <h2 style="text-align:center; display:block;">सम्बन्ध बिच्छेदको सूचना फाराम</h2>
-        <div class="form-grid">
-            <div class="form-group"><label>निर्णय गर्ने अदालत</label><input type="text" placeholder="जिल्ला / सर्वोच्च अदालत"></div>
-            <div class="form-group"><label>अदालतको निर्णय नम्बर</label><input type="text"></div>
-            <div class="form-group"><label>निर्णय भएको मिति</label><input type="text"></div>
-        </div>
+        <h1 class="form-title">मृत्युको सूचना फाराम</h1>
+        <p class="form-subtitle">(मृत्यु दर्ताको लागि भर्नु पर्ने पूर्ण सरकारी ढड्डा विबरण)</p>
+        
+        <div class="section-divider">कार्यालयले भर्ने खण्ड</div>
         <table class="header-table">
             <tr>
-                <th>विवरण</th>
-                <th>पतिको विवरण (Husband)</th>
-                <th>पत्निको विवरण (Wife)</th>
+                <td>दर्ता नम्बर: <input type="text"></td>
+                <td>दर्ता मिति (वि.सं.): <input type="text"></td>
+                <td>स्थानीय पञ्जिकाधिकारीको नाम: <input type="text" class="nepali-preeti"></td>
             </tr>
-            <tr><td>नाम थर</td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td>नागरिकता नं.</td><td><input type="text"></td><td><input type="text"></td></tr>
-            <tr><td>विवाह भएको मिति</td><td><input type="text"></td><td><input type="text"></td></tr>
         </table>
-        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ फाराम प्रिन्ट गर्नुहोस्</button></div>
+
+        <div class="section-divider">१. मृतकको व्यक्तिगत विवरण</div>
+        <div class="form-grid">
+            <div class="form-group"><label>नाम थर (नेपालीमा - Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>Full Name (In English)</label><input type="text"></div>
+            <div class="form-group"><label>नागरिकता प्रमाणपत्र नं.</label><input type="text"></div>
+        </div>
+        <div class="form-grid">
+            <div class="form-group"><label>उमेर / लिङ्ग</label><input type="text" placeholder="जस्तै: ६५ वर्ष / पुरुष"></div>
+            <div class="form-group"><label>मृत्यु भएको मिति (वि.सं.)</label><input type="text" placeholder="साल-महिना-गते"></div>
+            <div class="form-group"><label>मृत्यु भएको स्थान (Preeti)</label><input type="text" class="nepali-preeti"></div>
+        </div>
+        <div class="form-grid">
+            <div class="form-group"><label>मृत्युको कारण (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>वैवाहिक स्थिति</label><select><option>विवाहित</option><option>अविवाहित</option><option>विधुवा/विदुर</option></select></div>
+            <div class="form-group"><label>स्थायी ठेगाना (Preeti)</label><input type="text" class="nepali-preeti"></div>
+        </div>
+
+        <div class="section-divider">२. मृतकको पारिवारिक विवरण</div>
+        <div class="form-grid">
+            <div class="form-group"><label>बाबुको नाम थर (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>आमाको नाम थर (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>पति/पत्नीको नाम थर (Preeti)</label><input type="text" class="nepali-preeti"></div>
+        </div>
+        <div class="form-grid">
+            <div class="form-group" style="grid-column: span 2;"><label>बाजेको पूरा नाम थर (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>सूचकको नाम र नाता (Preeti)</label><input type="text" class="nepali-preeti"></div>
+        </div>
+
+        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ मृत्यु दर्ता फाराम प्रिन्ट गर्नुहोस्</button></div>
+    </div>
+
+    <!-- ================= ३. पूर्ण विवाह दर्ता फाराम ================= -->
+    <div id="marriageForm" class="form-section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p><strong>अनुसूची-४</strong> (नियम ५ सँग सम्बन्धित)</p>
+            <button class="close-btn" onclick="closeForm('marriageForm')">Close X</button>
+        </div>
+        <h1 class="form-title">विवाहको सूचना फाराम</h1>
+        <p class="form-subtitle">(दुलहा र दुलहीको विवाह दर्ताको पूर्ण विवरण डिजिटल पाना)</p>
+
+        <div class="section-divider">कार्यालय प्रयोजनका लागि</div>
+        <table class="header-table">
+            <tr>
+                <td>दर्ता नम्बर: <input type="text"></td>
+                <td>विवाह दर्ता मिति: <input type="text"></td>
+                <td>विवाह भएको मिति (वि.सं): <input type="text"></td>
+                <td>विवाहको प्रकार: <select><option>परम्परागत</option><option>कागजी/कोर्ट म्यारिज</option></select></td>
+            </tr>
+        </table>
+
+        <div class="section-divider">दुलहा र दुलहीको विस्तृत विवरण खण्ड</div>
+        <table class="header-table">
+            <tr><th>विवरण शीर्षक</th><th>दुलहाको विवरण (Groom)</th><th>दुलहीको विवरण (Bride)</th></tr>
+            <tr><td>पूरा नाम थर (नेपाली - Preeti)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>Full Name (English Capital)</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>जन्म मिति (वि.सं.) र उमेर</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>स्थायी ठेगाना (प्रदेश/जिल्ला/वडा)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>नागरिकता प्रमाणपत्र नं. र जिल्ला</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>विवाह हुनु अघिको शैक्षिक स्थिति</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>पिताको पूरा नाम थर (Preeti)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>बाजेको पूरा नाम थर (Preeti)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+        </table>
+
+        <div class="section-divider">साक्षी र सूचक विवरण</div>
+        <div class="form-grid">
+            <div class="form-group"><label>दुलहा तर्फको साक्षी (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>दुलही तर्फको साक्षी (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>सूचना दिने सूचकको नाम (Preeti)</label><input type="text" class="nepali-preeti"></div>
+        </div>
+
+        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ विवाह दर्ता फाराम प्रिन्ट गर्नुहोस्</button></div>
+    </div>
+
+    <!-- ================= ४. पूर्ण बसाई सराई फाराम ================= -->
+    <div id="migrationForm" class="form-section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p><strong>बसाई सराई ढड्डा फाराम</strong></p>
+            <button class="close-btn" onclick="closeForm('migrationForm')">Close X</button>
+        </div>
+        <h1 class="form-title">बसाई सराईको सूचना फाराम</h1>
+        <p class="form-subtitle">(बसाई सरी जाने र आउने परिवारको पूर्ण आवश्यक विबरण)</p>
+
+        <div class="section-divider">१. बसाई सराईको साविक र वर्तमान ठेगाना</div>
+        <div class="form-grid">
+            <div class="form-group"><label>साविक (पहिलेको) ठेगाना (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>हाल बसाई सरी जाने ठेगाना (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>बसाई सराई गरेको मिति (वि.सं.)</label><input type="text" placeholder="२०८३-०१-०१"></div>
+        </div>
+        <div class="form-grid">
+            <div class="form-group"><label>बसाई सराईको कारण</label><select><option>आर्थिक/व्यापार</option><option>रोजगारी</option><option>कृषि/जग्गा खरिद</option><option>अन्य कारण</option></select></div>
+            <div class="form-group"><label>घरमुलीको पूरा नाम (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>घरमुलीको नागरिकता नं.</label><input type="text"></div>
+        </div>
+
+        <div class="section-divider">२. बसाई सराई गरी जाने परिवारका सदस्यहरूको पूर्ण नामावली</div>
+        <table class="header-table">
+            <tr><th>क्र.स.</th><th>पूरा नाम थर (नेपालीमा - Preeti)</th><th>लिङ्ग</th><th>जन्म मिति</th><th>घरमुलीसँगको नाता</th><th>नागरिकता नं / शैक्षिक योग्यता</th></tr>
+            <tr><td>१</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" style="width:50px;"></td><td><input type="text"></td><td><input type="text" class="nepali-preeti"></td><td><input type="text"></td></tr>
+            <tr><td>२</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" style="width:50px;"></td><td><input type="text"></td><td><input type="text" class="nepali-preeti"></td><td><input type="text"></td></tr>
+            <tr><td>३</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" style="width:50px;"></td><td><input type="text"></td><td><input type="text" class="nepali-preeti"></td><td><input type="text"></td></tr>
+            <tr><td>४</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" style="width:50px;"></td><td><input type="text"></td><td><input type="text" class="nepali-preeti"></td><td><input type="text"></td></tr>
+            <tr><td>५</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" style="width:50px;"></td><td><input type="text"></td><td><input type="text" class="nepali-preeti"></td><td><input type="text"></td></tr>
+        </table>
+
+        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ बसाई सराई फाराम प्रिन्ट गर्नुहोस्</button></div>
+    </div>
+
+    <!-- ================= ५. पूर्ण सम्बन्ध बिच्छेद फाराम ================= -->
+    <div id="divorceForm" class="form-section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p><strong>सम्बन्ध बिच्छेद अनुसूची</strong></p>
+            <button class="close-btn" onclick="closeForm('divorceForm')">Close X</button>
+        </div>
+        <h1 class="form-title">सम्बन्ध बिच्छेदको सूचना फाराम</h1>
+        <p class="form-subtitle">(अदालती निर्णय बमोजिम सम्बन्ध बिच्छेद दर्ताको पूर्ण रूप)</p>
+
+        <div class="section-divider">१. अदालतको फैसला विवरण</div>
+        <div class="form-grid">
+            <div class="form-group"><label>फैसला गर्ने अदालतको नाम (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>फैसला भएको मिति (वि.सं.)</label><input type="text"></div>
+            <div class="form-group"><label>केस/मुद्दा नम्बर:</label><input type="text"></div>
+        </div>
+
+        <div class="section-divider">२. पति र पत्नीको व्यक्तिगत विवरण खण्ड</div>
+        <table class="header-table">
+            <tr><th>विवरण विबरण</th><th>पतिको विवरण (Husband)</th><th>पत्निको विवरण (Wife)</th></tr>
+            <tr><td>पूरा नाम थर (नेपाली - Preeti)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>Full Name (English)</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>सम्बन्ध बिच्छेद हुँदाको उमेर</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>विवाह हुँदाको मिति र ठेगाना</td><td><input type="text"></td><td><input type="text"></td></tr>
+            <tr><td>बाबु/आमाको नाम (Preeti)</td><td><input type="text" class="nepali-preeti"></td><td><input type="text" class="nepali-preeti"></td></tr>
+            <tr><td>सम्बन्ध बिच्छेद हुनुको मुख्य कारण</td><td colspan="2"><input type="text" class="nepali-preeti"></td></tr>
+        </table>
+
+        <div class="section-divider">३. बच्चा/नाबालक संरक्षण सम्बन्धी विवरण (यदि भए)</div>
+        <div class="form-grid">
+            <div class="form-group" style="grid-column: span 2;"><label>छोराछोरी कसको संरक्षणमा रहने फैसला भएको छ? (Preeti)</label><input type="text" class="nepali-preeti"></div>
+            <div class="form-group"><label>सूचक/निवेदकको नाम (Preeti)</label><input type="text" class="nepali-preeti"></div>
+        </div>
+
+        <div class="print-btn-container"><button class="print-btn" onclick="window.print()">🖨️ सम्बन्ध बिच्छेद फाराम प्रिन्ट गर्नुहोस्</button></div>
     </div>
 
 </section>
@@ -462,18 +426,18 @@ footer {
 </section>
 
 <footer>
-    &copy; 2026 Pin2 Kumar Photocopy & Online Works | All Rights Reserved
+    &copy; 2026 Pin2 Kumar Photocopy & Online Works | All Rights Reserved 
 </footer>
 
-<a class="whatsapp" href="https://wa.me/9779817488390" target="_blank">💬 WhatsApp Us</a>
-
 <script>
+function toggleAppMenu() {
+    var menu = document.getElementById('formsMenu');
+    menu.style.display = (menu.style.display === 'grid') ? 'none' : 'grid';
+}
+
 function showForm(formId) {
-    // सबै फारामहरू लुकाउने
     document.querySelectorAll('.form-section').forEach(form => form.style.display = 'none');
-    // छानिएको फाराम देखाउने
     document.getElementById(formId).style.display = 'block';
-    // फाराम भएको ठाउँमा स्क्रोल गर्ने
     document.getElementById(formId).scrollIntoView({ behavior: 'smooth' });
 }
 
