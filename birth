@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pin2 Kumar Photocopy & Online Works</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #0057b8, #e60023);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+header p {
+    font-size: 20px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+nav {
+    background: #003f8a;
+    text-align: center;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffcc00;
+}
+
+section {
+    padding: 70px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #0057b8;
+    margin-bottom: 25px;
+    font-size: 28px;
+    border-bottom: 3px solid #e60023;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.about-poster {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.about-poster img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.about-poster img:hover {
+    transform: scale(1.02);
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+    font-weight: 600;
+    color: #003f8a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #0057b8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-left-color: #e60023;
+}
+
+/* Form Link Button Style */
+.form-link {
+    display: inline-block;
+    background: #e60023;
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: background 0.3s;
+}
+
+.form-link:hover {
+    background: #b3001b;
+    color: white;
+}
+
+.contact {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.contact p {
+    margin-bottom: 15px;
+    font-size: 17px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact p strong {
+    color: #0057b8;
+    min-width: 140px;
+}
+
+footer {
+    background: #003f8a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999;
+}
+
+.whatsapp:hover {
+    transform: scale(1.05);
+    background: #20ba5a;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Pin2 Kumar Photocopy & Online Works</h1>
+    <p>Your Trusted Photocopy & Online Service Center in Kudiya</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="birth-form.html" target="_blank" style="color: #ffcc00;">Birth Form 📝</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+    <h2>About Us</h2>
+    <div class="about-container">
+        <div class="about-text">
+            <p>
+                Welcome to Pin2 Kumar Photocopy & Online Works. 
+                We provide fast, reliable, and high-quality photocopy, printing, online form filling, 
+                document scanning, typing, lamination, and a wide variety of essential digital services.
+            </p>
+            <p>
+                Visit us for prompt and hassle-free support with all your documentation and internet needs. 
+                We ensure complete customer satisfaction with accurate work and affordable rates.
+            </p>
+        </div>
+        <div class="about-poster">
+            <img src="poster.png" alt="Pin2 Kumar Photocopy Poster">
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="card">Photocopy (B/W & Color)</div>
+        <div class="card">Printing Services</div>
+        <div class="card">
+            <span>Online Form Filling</span>
+            <!-- जन्म दर्ता फॉर्म का लिंक बटन -->
+            <a href="birth-form.html" target="_blank" class="form-link">Birth Form Entry 📄</a>
+        </div>
+        <div class="card">Document Scanning</div>
+        <div class="card">Lamination</div>
+        <div class="card">Passport Size Photos</div>
+        <div class="card">Typing Services</div>
+        <div class="card">Government Applications</div>
+        <div class="card">Educational Applications</div>
+        <div class="card">Internet Services</div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact">
+        <p><strong>Business Name:</strong> Pin2 Kumar Photocopy & Online Works</p>
+        <p><strong>Address:</strong> Susta-02, Kudiya, Near Ward No. 2 Office, Nawalparasi</p>
+        <p><strong>Phone:</strong> +977 9817488390</p>
+        <p><strong>Phone:</strong> +977 9824419227</p>
+        <p><strong>WhatsApp:</strong> +977 9817488390</p>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 Pin2 Kumar Photocopy & Online Works | All Rights Reserved
+</footer>
+
+<a class="whatsapp" href="https://wa.me/9779817488390" target="_blank">
+    💬 Contact Us
+</a>
+
+</body>
+</html>
