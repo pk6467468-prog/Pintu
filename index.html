@@ -19,14 +19,15 @@ nav { background: #003f8a; padding: 12px; text-align: center; position: sticky; 
 nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
 .whatsapp-nav { background: #25D366; color: white !important; padding: 5px 12px; border-radius: 4px; display: inline-flex; align-items: center; }
 
-<img src="poster.png" alt="Pin2 Kumar Photocopy and online works" class="hero-poster">
+.hero-poster { width: 100%; max-width: 800px; margin: 20px auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
 .container { max-width: 1200px; margin: auto; padding: 20px; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px; }
 .card { background: white; padding: 20px; border-radius: 8px; text-align: center; border-top: 4px solid #e60023; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
 .btn-open { background: #e60023; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; margin-top: 10px; font-weight: bold; width: 100%; }
 
-/* Dashboard List Style */
+/* Saved Dashboard List Style */
 .dashboard-section { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-top: 20px; }
 .list-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
 .list-table th, .list-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
@@ -82,7 +83,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
     <a href="https://wa.me/9779817488390" target="_blank" class="whatsapp-nav">💬 Whatsapp Us</a>
 </nav>
 
-<!-- Business Poster -->
+<!-- Main Banner Image Reference (poster.png) -->
 <img src="poster.png" alt="Pin2 Kumar Photocopy and online works" class="hero-poster">
 
 <div class="container">
@@ -96,7 +97,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         <div class="card"><h3>५. सम्बन्ध बिच्छेद फाराम</h3><p>(अनुसूची फाराम)</p><button class="btn-open" onclick="showForm('divorceForm')">फाराम खोल्नुहोस्</button></div>
     </div>
 
-    <!-- Saved Forms List Section on Dashboard -->
+    <!-- Saved Forms List Dashboard -->
     <div class="dashboard-section" id="savedListSection">
         <h2>📁 भविष्यका लागि सुरक्षित गरिएका फारामहरू (Saved Forms List)</h2>
         <table class="list-table">
@@ -110,7 +111,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
                 </tr>
             </thead>
             <tbody id="savedFormsTableBody">
-                <!-- Data will load here dynamically -->
+                <!-- Loaded Dynamically -->
             </tbody>
         </table>
     </div>
@@ -130,15 +131,16 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
                 <td>वडा नं.: <input type="text" style="width:50px;" id="b_wada"></td>
             </tr>
             <tr>
-                <td colspan="2">स्थानीय पञ्जिकाधिकारीको नाम: <input type="text" class="nepali-preeti"></td>
-                <td colspan="2">Name (In English): <input type="text" style="text-transform:uppercase;"></td>
+                <td colspan="2">स्थानीय पञ्जिकाधिकारीको नाम: <input type="text" class="nepali-preeti" id="b_officer"></td>
+                <td colspan="2">Name (In English): <input type="text" style="text-transform:uppercase;" id="b_officer_en"></td>
             </tr>
             <tr>
                 <td>दर्ता नं.: <input type="text" id="b_darta_no"></td>
-                <td>कर्मचारी संकेत नं.: <input type="text"></td>
-                <td>फाराम दर्ता मिति (वि.सं.): <input type="text" placeholder="साल-महिना-गते"></td>
-                <td>फाराम दर्ता मिति (ई.सं.): <input type="text" placeholder="YYYY-MM-DD"></td>
+                <td>कर्मचारी संकेत नं.: <input type="text" id="b_emp_no"></td>
+                <td>फाराम दर्ता मिति (वि.सं.): <input type="text" placeholder="साल-महिना-गते" id="b_reg_date_bs"></td>
+                <td>फाराम दर्ता मिति (ई.सं.): <input type="text" placeholder="YYYY-MM-DD" id="b_reg_date_ad"></td>
             </tr>
+            <tr><td colspan="4">परिवारको लगत फाराम नं.: <input type="text" style="width:250px;" id="b_family_no"></td></tr>
         </table>
 
         <div class="section-head">१. नवजात शिशुको विवरण</div>
@@ -146,14 +148,62 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr>
                 <td>नाम: <input type="text" class="nepali-preeti" id="b_shishu_name"></td>
                 <td>थर: <input type="text" class="nepali-preeti" id="b_shishu_thar"></td>
-                <td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;"></td>
+                <td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="b_shishu_name_en"></td>
             </tr>
             <tr>
-                <td colspan="2">जन्म मिति (वि.सं.): <input type="text" placeholder="साल-महिना-गते" id="b_dob"></td>
-                <td colspan="2">ई.सं. मा: <input type="text" placeholder="YYYY-MM-DD"></td>
+                <td colspan="2">जन्म मिति (वि.सं.): <input type="text" placeholder="साल-महिना-गते" id="b_dob_bs"> मा</td>
+                <td colspan="2">ई.सं. मा: <input type="text" placeholder="YYYY-MM-DD" id="b_dob_ad"></td>
             </tr>
             <tr>
-                <td colspan="4">शिशु जन्मेको ठेगाना: <input type="text" class="nepali-preeti" id="b_address"></td>
+                <td colspan="4">शिशु जन्मेको ठाउँ: <input type="checkbox" id="b_place_home"> घर &nbsp; <input type="checkbox" id="b_place_health"> स्वास्थ संस्था &nbsp; <input type="checkbox" id="b_place_hosp"> अस्पताल &nbsp; <input type="checkbox" id="b_place_other"> अन्य</td>
+            </tr>
+            <tr>
+                <td colspan="4">शिशु जन्मदा मद्दत गर्ने व्यक्ति: <input type="checkbox" id="b_help_fam"> घरको मानिस &nbsp; <input type="checkbox" id="b_help_sudini"> सुडिनी &nbsp; <input type="checkbox" id="b_help_nurse"> नर्स &nbsp; <input type="checkbox" id="b_help_hw"> स्वास्थ कर्मी &nbsp; <input type="checkbox" id="b_help_doc"> डाक्टर</td>
+            </tr>
+            <tr>
+                <td>लिङ्ग: <input type="checkbox" id="b_gen_m"> पुरुष &nbsp; <input type="checkbox" id="b_gen_f"> महिला &nbsp; <input type="checkbox" id="b_gen_o"> अन्य</td>
+                <td>जात / जाति: <input type="text" class="nepali-preeti" id="b_caste"></td>
+                <td colspan="2">जन्मको किसिम: <input type="checkbox" id="b_type_single"> एकल &nbsp; <input type="checkbox" id="b_type_twin"> जुम्ल्याहा</td>
+            </tr>
+            <tr>
+                <td colspan="4">कुनै शारीरिक विकृती: <input type="checkbox" id="b_dis_no"> छैन &nbsp; <input type="checkbox" id="b_dis_yes"> भएमा उल्लेख गर्ने: <input type="text" class="nepali-preeti" style="width:70%;" id="b_dis_details"></td>
+            </tr>
+            <tr>
+                <td colspan="2">शिशु जन्मेको ठेगाना: <input type="text" class="nepali-preeti" id="b_birth_address"></td>
+                <td colspan="2">विदेशमा जन्मेको भए ठेगाना (In English): <input type="text" id="b_birth_address_en"></td>
+            </tr>
+        </table>
+
+        <div class="section-head">२. नवजात शिशुको बाजे बजैको विवरण</div>
+        <table class="form-table">
+            <tr>
+                <td>बाजेको नाम: <input type="text" class="nepali-preeti" id="b_gf_name"></td>
+                <td>थर: <input type="text" class="nepali-preeti" id="b_gf_thar"></td>
+                <td>बाजेको पूरा नाम (English): <input type="text" style="text-transform:uppercase;" id="b_gf_name_en"></td>
+            </tr>
+        </table>
+
+        <div class="section-head">३. नवजात शिशुको बाबु आमाको विवरण</div>
+        <table class="form-table">
+            <tr><th style="width:25%">विवरण</th><th style="width:37%">बाबुको विवरण</th><th style="width:38%">आमाको विवरण</th></tr>
+            <tr><td>नाम / थर (नेपाली)</td><td><input type="text" class="nepali-preeti" id="b_f_name"></td><td><input type="text" class="nepali-preeti" id="b_m_name"></td></tr>
+            <tr><td>पूरा नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="b_f_name_en"></td><td><input type="text" style="text-transform:uppercase;" id="b_m_name_en"></td></tr>
+            <tr><td>स्थायी ठेगाना</td><td><input type="text" class="nepali-preeti" id="b_f_addr"></td><td><input type="text" class="nepali-preeti" id="b_m_addr"></td></tr>
+            <tr><td>Address (In English)</td><td><input type="text" id="b_f_addr_en"></td><td><input type="text" id="b_m_addr_en"></td></tr>
+            <tr><td>शिशु जन्मदाको उमेर / देश</td><td>उमेर: <input type="text" style="width:40px;" id="b_f_age"> देश: <input type="text" style="width:80px;" id="b_f_country"></td><td>उमेर: <input type="text" style="width:40px;" id="b_m_age"> देश: <input type="text" style="width:80px;" id="b_m_country"></td></tr>
+            <tr><td>नागरिकता नं. / जारी जिल्ला</td><td>नं: <input type="text" style="width:100px;" id="b_f_cit"> जिल्ला: <input type="text" style="width:80px;" id="b_f_cit_dist"></td><td>नं: <input type="text" style="width:100px;" id="b_m_cit"> जिल्ला: <input type="text" style="width:80px;" id="b_m_cit_dist"></td></tr>
+        </table>
+
+        <div class="section-head">४. सूचकको विवरण र सहीछाप</div>
+        <table class="form-table">
+            <tr>
+                <td>नाम / थर: <input type="text" class="nepali-preeti" id="b_rep_name"></td>
+                <td>पूरा नाम (English): <input type="text" style="text-transform:uppercase;" id="b_rep_name_en"></td>
+                <td>शिशुसँगको नाता: <input type="text" class="nepali-preeti" id="b_rep_rel"></td>
+            </tr>
+            <tr>
+                <td colspan="2">ठेगाना: <input type="text" class="nepali-preeti" id="b_rep_addr"></td>
+                <td>नागरिकता प्रमाणपत्र नं: <input type="text" id="b_rep_cit"></td>
             </tr>
         </table>
         <div class="action-btns">
@@ -162,22 +212,78 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
+
     <!-- ================= २. मृत्यु दर्ता फाराम ================= -->
     <div id="deathForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; font-weight: bold;">अनुसूची-१ (नियम ५ सँग सम्वन्धित)</p>
         <h1 class="form-title">मृत्युको सूचना फाराम</h1>
         
+        <div class="section-head">स्थानीय पञ्जिकाधिकारीले भर्ने खण्ड</div>
+        <table class="form-table">
+            <tr>
+                <td>अञ्चल: <input type="text" class="nepali-preeti" id="d_anchal"></td>
+                <td>जिल्ला: <input type="text" class="nepali-preeti" id="d_jilla"></td>
+                <td>गा.वि.स./न.पा.: <input type="text" class="nepali-preeti" id="d_gapa"></td>
+                <td>वडा नं.: <input type="text" style="width:50px;" id="d_wada"></td>
+            </tr>
+            <tr>
+                <td>दर्ता नं.: <input type="text" id="d_darta_no"></td>
+                <td>कर्मचारी संकेत नं.: <input type="text" id="d_emp_no"></td>
+                <td>फाराम दर्ता मिति (वि.सं.): <input type="text" id="d_reg_date"></td>
+                <td>परिवारको लगत फाराम नं.: <input type="text" id="d_fam_no"></td>
+            </tr>
+        </table>
+
         <div class="section-head">१. मृतकको विवरण</div>
         <table class="form-table">
             <tr>
-                <td>दर्ता नं.: <input type="text" id="d_darta_no"></td>
-                <td>मृतकको नाम: <input type="text" class="nepali-preeti" id="d_name"></td>
+                <td>जन्म दर्ता नं.: <input type="text" id="d_birth_reg_no"></td>
+                <td>नाम: <input type="text" class="nepali-preeti" id="d_name"></td>
                 <td>थर: <input type="text" class="nepali-preeti" id="d_thar"></td>
             </tr>
             <tr>
-                <td colspan="2">मृत्यु भएको मिति (वि.सं.): <input type="text" id="d_date"></td>
-                <td>मृत्युको स्थान: <input type="text" class="nepali-preeti"></td>
+                <td colspan="3">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="d_name_en"></td>
+            </tr>
+            <tr>
+                <td colspan="2">जन्म मिति (वि.सं.): <input type="text" id="d_dob"> &nbsp; ई.सं. मा: <input type="text" id="d_dob_en"></td>
+                <td>मृत्युको स्थान: <input type="checkbox" id="d_pl_home"> घर &nbsp; <input type="checkbox" id="d_pl_hosp"> अस्पताल</td>
+            </tr>
+            <tr>
+                <td colspan="2">मृत्यु भएको मिति (वि.सं.): <input type="text" id="d_death_date"> &nbsp; ई.सं. मा: <input type="text" id="d_death_date_en"></td>
+                <td>मृत्युको कारण: <input type="text" class="nepali-preeti" id="d_reason"></td>
+            </tr>
+            <tr>
+                <td colspan="3">मृतकको स्थायी ठेगाना (नेपाली): <input type="text" class="nepali-preeti" id="d_addr"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Address (In English): <input type="text" id="d_addr_en"></td>
+            </tr>
+            <tr>
+                <td>नागरिकता नं: <input type="text" id="d_cit_no"></td>
+                <td>जारी मिति र जिल्ला: <input type="text" class="nepali-preeti" id="d_cit_dist"></td>
+                <td>पूर्व वैवाहिक स्थिति: <input type="checkbox" id="d_mar_yes"> विवाहित &nbsp; <input type="checkbox" id="d_mar_no"> अविवाहित</td>
+            </tr>
+        </table>
+
+        <div class="section-head">२. मृतकको बाजे, बाबु, आमा र पति/पत्नीको विवरण</div>
+        <table class="form-table">
+            <tr><td>बाजेको नाम थर:</td><td><input type="text" class="nepali-preeti" id="d_gf"></td><td>In English:</td><td><input type="text" style="text-transform:uppercase;" id="d_gf_en"></td></tr>
+            <tr><td>बाबुको नाम थर:</td><td><input type="text" class="nepali-preeti" id="d_f"></td><td>In English:</td><td><input type="text" style="text-transform:uppercase;" id="d_f_en"></td></tr>
+            <tr><td>आमाको नाम थर:</td><td><input type="text" class="nepali-preeti" id="d_m"></td><td>In English:</td><td><input type="text" style="text-transform:uppercase;" id="d_m_en"></td></tr>
+            <tr><td>पति/पत्नीको नाम:</td><td><input type="text" class="nepali-preeti" id="d_spouse"></td><td>In English:</td><td><input type="text" style="text-transform:uppercase;" id="d_spouse_en"></td></tr>
+        </table>
+
+        <div class="section-head">३. सूचकको विवरण र सहीछाप</div>
+        <table class="form-table">
+            <tr>
+                <td>नाम / थर: <input type="text" class="nepali-preeti" id="d_rep_name"></td>
+                <td>पूरा नाम (English): <input type="text" style="text-transform:uppercase;" id="d_rep_name_en"></td>
+                <td>मृतकसँगको नाता: <input type="text" class="nepali-preeti" id="d_rep_rel"></td>
+            </tr>
+            <tr>
+                <td colspan="2">ठेगाना: <input type="text" class="nepali-preeti" id="d_rep_addr"></td>
+                <td>नागरिकता नं: <input type="text" id="d_rep_cit"></td>
             </tr>
         </table>
         <div class="action-btns">
@@ -186,17 +292,57 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
+
     <!-- ================= ३. विवाह दर्ता फाराम ================= -->
     <div id="marriageForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; font-weight: bold;">अनुसूची-४ (नियम १ सँग सम्वन्धित)</p>
         <h1 class="form-title">विवाहको सूचना फाराम</h1>
         
-        <div class="section-head">दुलहा दुलहीको विवरण</div>
+        <div class="section-head">स्थानीय पञ्जिकाधिकारीले भर्ने खण्ड</div>
         <table class="form-table">
-            <tr><td>दुलहाको नाम (Groom):</td><td><input type="text" class="nepali-preeti" id="m_groom"></td></tr>
-            <tr><td>दुलहीको नाम (Bride):</td><td><input type="text" class="nepali-preeti" id="m_bride"></td></tr>
-            <tr><td>विवाह मिति:</td><td><input type="text" id="m_date"></td></tr>
+            <tr>
+                <td>अञ्चल/जिल्ला: <input type="text" class="nepali-preeti" id="m_jilla"></td>
+                <td>गा.वि.स./न.पा. र वडा: <input type="text" class="nepali-preeti" id="m_gapa"></td>
+                <td>पञ्जिकाधिकारीको नाम: <input type="text" class="nepali-preeti" id="m_officer"></td>
+                <td>दर्ता नं. / मिति: <input type="text" id="m_darta_no"></td>
+            </tr>
+        </table>
+
+        <div class="section-head">१. विवाहको विवरण</div>
+        <table class="form-table">
+            <tr>
+                <td colspan="2">विवाहको किसिम: <input type="checkbox" id="m_type_soc"> सामाजिक परम्परा अनुसार &nbsp;&nbsp; <input type="checkbox" id="m_type_law"> विवाह दर्ता ऐन, २०२८ अनुसार</td>
+            </tr>
+            <tr>
+                <td>विवाह भएको मिति: वि.सं. <input type="text" style="width:150px;" id="m_date_bs"></td>
+                <td>ई.सं. मा: <input type="text" style="width:150px;" id="m_date_ad"></td>
+            </tr>
+            <tr>
+                <td colspan="2">विवाह सम्पन्न भएको स्थान / ठेगाना: <input type="text" class="nepali-preeti" id="m_place"></td>
+            </tr>
+        </table>
+
+        <div class="section-head">२. दुलहा दुलहीको विवरण</div>
+        <table class="form-table">
+            <tr><th style="width:20%">विवरण शीर्षक</th><th style="width:40%">दुलहाको विवरण (Groom)</th><th style="width:40%">दुलहीको विवरण (Bride)</th></tr>
+            <tr><td>नाम / थर (नेपाली)</td><td><input type="text" class="nepali-preeti" id="m_groom"></td><td><input type="text" class="nepali-preeti" id="m_bride"></td></tr>
+            <tr><td>पूरा नाम (In English)</td><td><input type="text" style="text-transform:uppercase;" id="m_groom_en"></td><td><input type="text" style="text-transform:uppercase;" id="m_bride_en"></td></tr>
+            <tr><td>जन्म मिति / जात-जाति</td><td><input type="text" id="m_g_dob"></td><td><input type="text" id="m_b_dob"></td></tr>
+            <tr><td>स्थायी ठेगाना (नेपाली)</td><td><input type="text" class="nepali-preeti" id="m_g_addr"></td><td><input type="text" class="nepali-preeti" id="m_b_addr"></td></tr>
+            <tr><td>Address (In English)</td><td><input type="text" id="m_g_addr_en"></td><td><input type="text" id="m_b_addr_en"></td></tr>
+            <tr><td>नागरिकता नं. / जारी जिल्ला</td><td><input type="text" id="m_g_cit"></td><td><input type="text" id="m_b_cit"></td></tr>
+            <tr><td>बाबुको नाम थर (नेपाली)</td><td><input type="text" class="nepali-preeti" id="m_g_father"></td><td><input type="text" class="nepali-preeti" id="m_b_father"></td></tr>
+            <tr><td>आमाको नाम थर (नेपाली)</td><td><input type="text" class="nepali-preeti" id="m_g_mother"></td><td><input type="text" class="nepali-preeti" id="m_b_mother"></td></tr>
+        </table>
+
+        <div class="section-head">३. सूचकको विवरण</div>
+        <table class="form-table">
+            <tr>
+                <td>नाम / थर: <input type="text" class="nepali-preeti" id="m_rep_name"></td>
+                <td>पूरा नाम (English): <input type="text" style="text-transform:uppercase;" id="m_rep_name_en"></td>
+                <td>ठेगाना / नागरिकता नं: <input type="text" class="nepali-preeti" id="m_rep_cit"></td>
+            </tr>
         </table>
         <div class="action-btns">
             <button class="print-btn" onclick="printThisForm('marriageForm')">🖨️ PRINT FORM</button>
@@ -204,16 +350,52 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
+
     <!-- ================= ४. बसाई सराई फाराम ================= -->
     <div id="migrationForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; font-weight: bold;">अनुसूची-१ (नियम १ सँग सम्वन्धित)</p>
         <h1 class="form-title">बसाई सराईको सूचना फाराम</h1>
         
-        <div class="section-head">विवरण</div>
+        <div class="section-head">स्थानीय पञ्जिकाधिकारीले भर्ने खण्ड</div>
         <table class="form-table">
-            <tr><td>घरमुलीको नाम थर:</td><td><input type="text" class="nepali-preeti" id="mig_name"></td></tr>
-            <tr><td>बसाई सराई मिति:</td><td><input type="text" id="mig_date"></td></tr>
+            <tr>
+                <td>अञ्चल/जिल्ला: <input type="text" class="nepali-preeti" id="mig_jilla"></td>
+                <td>गा.वि.स./न.पा. र वडा नं.: <input type="text" class="nepali-preeti" id="mig_gapa"></td>
+                <td>पञ्जिकाधिकारीको नाम: <input type="text" class="nepali-preeti" id="mig_officer"></td>
+                <td>दर्ता नं. / मिति: <input type="text" id="mig_darta_no"></td>
+            </tr>
+        </table>
+
+        <div class="section-head">१. कहाँ सरी जाने ठेगाना (New Address)</div>
+        <table class="form-table">
+            <tr><td>नेपालीमा ठेगाना: <input type="text" class="nepali-preeti" id="mig_new_addr"></td></tr>
+            <tr><td>In English Address: <input type="text" id="mig_new_addr_en"></td></tr>
+        </table>
+
+        <div class="section-head">२. कहाँबाट सरी आएको ठेगाना (Old Address)</div>
+        <table class="form-table">
+            <tr><td>सरि आएको दर्ता नं.: <input type="text" style="width:150px;" id="mig_old_darta"> ठेगाना (नेपाली): <input type="text" class="nepali-preeti" style="width:65%;" id="mig_old_addr"></td></tr>
+            <tr><td>घरमुलीको नाम थर: <input type="text" class="nepali-preeti" style="width:30%;" id="mig_name"> In English: <input type="text" style="width:35%; text-transform:uppercase;" id="mig_name_en"></td></tr>
+            <tr><td>बसाई सराई मिति: <input type="text" style="width:150px;" id="mig_date"> | कारण: <input type="checkbox" id="mig_r_job"> नोकरी &nbsp; <input type="checkbox" id="mig_r_biz"> व्यापार &nbsp; <input type="checkbox" id="mig_r_other"> अन्य</td></tr>
+        </table>
+
+        <div class="section-head">३. बसाई सराई गरी जाने व्यक्तिको विवरण</div>
+        <table class="form-table">
+            <thead>
+                <tr>
+                    <th style="width:5%">क्र.स.</th>
+                    <th style="width:20%">जन्म दर्ता नं.</th>
+                    <th style="width:40%">पुरा नाम थर (नेपाली)</th>
+                    <th style="width:20%">जन्म मिति</th>
+                    <th style="width:15%">नाता</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>१</td><td><input type="text" id="mig_p1_no"></td><td><input type="text" class="nepali-preeti" id="mig_p1_name"></td><td><input type="text" id="mig_p1_dob"></td><td><input type="text" class="nepali-preeti" id="mig_p1_rel"></td></tr>
+                <tr><td>२</td><td><input type="text" id="mig_p2_no"></td><td><input type="text" class="nepali-preeti" id="mig_p2_name"></td><td><input type="text" id="mig_p2_dob"></td><td><input type="text" class="nepali-preeti" id="mig_p2_rel"></td></tr>
+                <tr><td>३</td><td><input type="text" id="mig_p3_no"></td><td><input type="text" class="nepali-preeti" id="mig_p3_name"></td><td><input type="text" id="mig_p3_dob"></td><td><input type="text" class="nepali-preeti" id="mig_p3_rel"></td></tr>
+            </tbody>
         </table>
         <div class="action-btns">
             <button class="print-btn" onclick="printThisForm('migrationForm')">🖨️ PRINT FORM</button>
@@ -221,16 +403,48 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
+
     <!-- ================= ५. सम्बन्ध बिच्छेद फाराम ================= -->
     <div id="divorceForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; font-weight: bold;">अनुसूची (नियम ५ सँग सम्वन्धित)</p>
         <h1 class="form-title">सम्बन्ध बिच्छेदको सूचना फाराम</h1>
         
-        <div class="section-head">विवरण</div>
+        <div class="section-head">स्थानीय पञ्जिकाधिकारीले भर्ने खण्ड</div>
         <table class="form-table">
-            <tr><td>पतिको नाम (Husband):</td><td><input type="text" class="nepali-preeti" id="div_husband"></td></tr>
-            <tr><td>पत्निको नाम (Wife):</td><td><input type="text" class="nepali-preeti" id="div_wife"></td></tr>
+            <tr>
+                <td>अञ्चल/जिल्ला: <input type="text" class="nepali-preeti" id="div_jilla"></td>
+                <td>गा.वि.स./न.पा. र वडा नं.: <input type="text" class="nepali-preeti" id="div_gapa"></td>
+                <td>स्थानीय पञ्जिकाधिकारीको नाम: <input type="text" class="nepali-preeti" id="div_officer"></td>
+                <td>दर्ता नं. / मिति: <input type="text" id="div_darta_no"></td>
+            </tr>
+        </table>
+
+        <div class="section-head">१. सम्बन्ध बिच्छेद सम्बन्धी अदालती विवरण</div>
+        <table class="form-table">
+            <tr><td colspan="2">अदालतको किसिम: <input type="checkbox" id="div_court_dist"> जिल्ला अदालत &nbsp; <input type="checkbox" id="div_court_high"> पुनरावेदन अदालत</td></tr>
+            <tr><td>अदालत रहेको जिल्ला: <input type="text" class="nepali-preeti" id="div_court_jilla"></td><td>अदालतको निर्णय नम्बर: <input type="text" id="div_court_decision_no"></td></tr>
+            <tr><td>अदालतको निर्णय मिति: <input type="text" id="div_court_date"></td><td>विवाह दर्ता नं. (साविकको): <input type="text" id="div_old_marriage_no"></td></tr>
+        </table>
+
+        <div class="section-head">२. पति पत्नीको विवरण</div>
+        <table class="form-table">
+            <tr><th style="width:20%">विवरण शीर्षक</th><th style="width:40%">पतिको विवरण (Husband)</th><th style="width:40%">पत्निको विवरण (Wife)</th></tr>
+            <tr><td>नाम / थर (नेपाली)</td><td><input type="text" class="nepali-preeti" id="div_husband"></td><td><input type="text" class="nepali-preeti" id="div_wife"></td></tr>
+            <tr><td>पूरा नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="div_husband_en"></td><td><input type="text" style="text-transform:uppercase;" id="div_wife_en"></td></tr>
+            <tr><td>जन्म मिति / दर्ता नं.</td><td><input type="text" id="div_h_dob"></td><td><input type="text" id="div_w_dob"></td></tr>
+            <tr><td>नागरिकता नं. / जिल्ला</td><td><input type="text" id="div_h_cit"></td><td><input type="text" id="div_w_cit"></td></tr>
+            <tr><td>सम्बन्ध बिच्छेद अगाडिको ठेगाना</td><td><input type="text" class="nepali-preeti" id="div_h_addr"></td><td><input type="text" class="nepali-preeti" id="div_w_addr"></td></tr>
+            <tr><td>बाजे / बाबु / आमाको नाम</td><td><input type="text" class="nepali-preeti" id="div_h_parents"></td><td><input type="text" class="nepali-preeti" id="div_w_parents"></td></tr>
+        </table>
+
+        <div class="section-head">३. सूचकको विवरण</div>
+        <table class="form-table">
+            <tr>
+                <td>नाम / थर: <input type="text" class="nepali-preeti" id="div_rep_name"></td>
+                <td>पूरा नाम (English): <input type="text" style="text-transform:uppercase;" id="div_rep_name_en"></td>
+                <td>नाता: <input type="text" class="nepali-preeti" id="div_rep_rel"></td>
+            </tr>
         </table>
         <div class="action-btns">
             <button class="print-btn" onclick="printThisForm('divorceForm')">🖨️ PRINT FORM</button>
@@ -247,7 +461,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 </footer>
 
 <script>
-// Load Saved Data when Page Opens
+// Load Saved Data dynamically when Document is Ready
 document.addEventListener("DOMContentLoaded", loadSavedFormsList);
 
 function showForm(id) {
@@ -283,19 +497,19 @@ function saveFormData(formId, formType, nameInputId) {
     let clientName = document.getElementById(nameInputId).value || "अपरिचित व्यक्ति";
     let formData = { textData: {}, checkData: {} };
 
-    // Capture all filled data
+    // Capture text data carefully
     inputs.forEach((input, index) => {
         if(input.id) { formData.textData[input.id] = input.value; }
         else { formData.textData[formId + '_txt_' + index] = input.value; }
     });
     
+    // Capture checkboxes efficiently
     checkboxes.forEach((chk, index) => {
         formData.checkData[formId + '_chk_' + index] = chk.checked;
     });
 
     let savedForms = JSON.parse(localStorage.getItem("pin2_saved_forms")) || [];
     
-    // Create Unique Entry
     const newEntry = {
         id: Date.now(),
         type: formType,
@@ -345,7 +559,7 @@ function viewSavedForm(id) {
         showForm(selectedForm.formSectionId);
         const formContainer = document.getElementById(selectedForm.formSectionId);
         
-        // Restore Text Fields
+        // Restore all textboxes data
         const inputs = formContainer.querySelectorAll('input[type="text"]');
         inputs.forEach((input, index) => {
             const key = input.id || (selectedForm.formSectionId + '_txt_' + index);
@@ -354,7 +568,7 @@ function viewSavedForm(id) {
             }
         });
 
-        // Restore Checkboxes
+        // Restore all checkboxes state
         const checkboxes = formContainer.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach((chk, index) => {
             const key = selectedForm.formSectionId + '_chk_' + index;
