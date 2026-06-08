@@ -87,16 +87,6 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 <img src="poster.png" alt="Pin2 Kumar Photocopy and online works" class="hero-poster">
 
 <div class="container">
-
-    <div class="dashboard-section" id="tokenTrackerSection" style="margin-bottom: 25px; border-left: 5px solid #0057b8; background: #fff;">
-        <h3 style="color: #0057b8; margin-bottom: 5px;">🔍 DoNIDCR राष्ट्रिय परिचयपत्र तथा पञ्जीकरण विभाग ट्र्याकर</h3>
-        <p style="font-size: 13px; color: #555; margin-bottom: 15px;">अनलाइन फाराम भरेपछि प्राप्त भएको टोकन नम्बर (Application Number) यहाँ राखेर सरकारी सर्भरमा विवरण खोज्नुहोस्।</p>
-        
-        <div style="display: flex; gap: 10px; max-width: 600px; flex-wrap: wrap;">
-            <input type="text" id="govTokenNumber" placeholder="टोकन नम्बर यहाँ टाइप गर्नुहोस् (उदा: 1234567)" class="box-input" style="flex: 1; font-size: 14px; padding: 10px; min-width: 250px;">
-            <button onclick="trackGovToken()" style="background: #0057b8; color: white; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 14px;">विवरण खोज्नुहोस् (Track)</button>
-        </div>
-    </div>
     
     <div class="services-grid" id="mainDashboard">
         <div class="card"><h3>१. जन्म दर्ता फाराम</h3><p>(अनुसूची-२)</p><button class="btn-open" onclick="showForm('birthForm')">फाराम खोल्नुहोस्</button></div>
@@ -332,7 +322,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         <table class="form-table">
             <tr><td>पति/पत्नी को नाम</td><td><input type="text" class="nepali-preeti" id="d_sp_name"></td><td>थर</td><td><input type="text" class="nepali-preeti" id="d_sp_thar"></td></tr>
             <tr><td>पति/पत्नी को नाम थर (In English)</td><td colspan="3"><input type="text" style="text-transform:uppercase;" id="d_sp_en"></td></tr>
-            <tr><td colspan="4">दुई वा सोभन्दा बढी पत्नी भएमा सबैको नाम उल्लेख गर्ने (मृत्यु भएकाको समेत):</td></tr>
+            <tr><td colspan="4">दुई वा सोभन्दा बढी पत्नी भएमा सभीको नाम उल्लेख गर्ने (मृत्यु भएकाको समेत):</td></tr>
             <tr><td colspan="4"><textarea id="d_wives_list" style="width:100%; height:50px; border:1px solid #000; outline:none; padding:5px;"></textarea></td></tr>
             <tr><td>मृत्युको कारण</td><td colspan="3"><input type="text" class="nepali-preeti" id="d_ded_reason"></td></tr>
         </table>
@@ -340,7 +330,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         <div class="section-head">६. सूचकको विवरण (यसमा लेखिएको विवरण साँचो हो...)</div>
         <table class="form-table">
             <tr><td>नाम: <input type="text" class="nepali-preeti" id="d_rep_nm"></td><td>थर: <input type="text" class="nepali-preeti" id="d_rep_th"></td></tr>
-            <tr><td colspan="2">पूра नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="d_rep_en"></td></tr>
+            <tr><td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="d_rep_en"></td></tr>
             <tr><td colspan="2">मृतकसँगको नाता: <input type="text" class="nepali-preeti" id="d_rep_rel"></td></tr>
             <tr><td colspan="2"><b>ठेगाना:</b> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="d_rep_dis"> गा.वि.स./न.पा.: <input type="text" class="nepali-preeti" style="width:120px;" id="d_rep_gp"> वडा नं: <input type="text" style="width:40px;" id="d_rep_wd"> सडक: <input type="text" class="nepali-preeti" style="width:100px;" id="d_rep_rd"> टोल: <input type="text" class="nepali-preeti" style="width:100px;" id="d_rep_tl"> घर नं: <input type="text" style="width:60px;" id="d_rep_hn"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं. (स्वदेशी भएमा)</td><td><input type="text" id="d_rep_cit_no"></td></tr>
@@ -425,7 +415,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr><td>गाउँ / टोल</td><td><input type="text" class="nepali-preeti" id="m_g_tl"></td><td><input type="text" class="nepali-preeti" id="m_b_tl"></td></tr>
             <tr><td>घर नं.</td><td><input type="text" id="m_g_hn"></td><td><input type="text" id="m_b_hn"></td></tr>
             <tr><td>जन्म भएको देश</td><td><input type="text" class="nepali-preeti" id="m_g_bcntry"></td><td><input type="text" class="nepali-preeti" id="m_b_bcntry"></td></tr>
-            <tr><td>नागरिकता लिएको देश</td><td><input type="text" class="nepali-preeti" id="m_g_ccntry"></td><td><input type="text" class="nepali-preeti" id="m_b_ccntry"></td></tr>
+            <tr><td>नागरिकता लियाको देश</td><td><input type="text" class="nepali-preeti" id="m_g_ccntry"></td><td><input type="text" class="nepali-preeti" id="m_b_ccntry"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text" id="m_g_cit_no"></td><td><input type="text" id="m_b_cit_no"></td></tr>
             <tr><td>प्रमाणपत्र जारी मिति</td><td><input type="text" id="m_g_cit_dt"></td><td><input type="text" id="m_b_cit_dt"></td></tr>
             <tr><td>जारी जिल्ला</td><td><input type="text" class="nepali-preeti" id="m_g_cit_dis"></td><td><input type="text" class="nepali-preeti" id="m_b_cit_dis"></td></tr>
@@ -702,26 +692,10 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 <script>
 document.addEventListener("DOMContentLoaded", loadSavedFormsList);
 
-// 🎯 GOVERNMENT SYSTEM TOKEN TRACKER FUNCTION
-function trackGovToken() {
-    const token = document.getElementById('govTokenNumber').value.trim();
-    if (!token) {
-        alert("कृपया पहिले टोकन नम्बर राख्नुहोस् ! (Please enter a token number first)");
-        return;
-    }
-    
-    // नेपाल सरकारको आधिकारिक अनलाइन दर्ता पोर्टल लिंक (टोकन ट्र्याकिङ यूआरएल)
-    const targetUrl = `https://public.donidcr.gov.np/BirthRegistrationMain/BirthRegistrationMain?p=ob%2BACF2rxqibas5x2EjHVA%3D%3D&token=${encodeURIComponent(token)}`;
-    
-    // नयाँ सुरक्षित ट्याबमा विन्डो खोल्ने
-    window.open(targetUrl, '_blank');
-}
-
 function showForm(id) {
     document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
     document.getElementById('mainDashboard').style.display = 'none';
     document.getElementById('savedListSection').style.display = 'none';
-    document.getElementById('tokenTrackerSection').style.display = 'none';
     document.getElementById(id).style.display = 'block';
     window.scrollTo(0, 0);
 }
@@ -730,7 +704,6 @@ function closeForm() {
     document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
     document.getElementById('mainDashboard').style.display = 'grid';
     document.getElementById('savedListSection').style.display = 'block';
-    document.getElementById('tokenTrackerSection').style.display = 'block';
     loadSavedFormsList();
 }
 
