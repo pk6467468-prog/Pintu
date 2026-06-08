@@ -87,6 +87,16 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 <img src="poster.png" alt="Pin2 Kumar Photocopy and online works" class="hero-poster">
 
 <div class="container">
+
+    <div class="dashboard-section" id="tokenTrackerSection" style="margin-bottom: 25px; border-left: 5px solid #0057b8; background: #fff;">
+        <h3 style="color: #0057b8; margin-bottom: 5px;">🔍 DoNIDCR राष्ट्रिय परिचयपत्र तथा पञ्जीकरण विभाग ट्र्याकर</h3>
+        <p style="font-size: 13px; color: #555; margin-bottom: 15px;">अनलाइन फाराम भरेपछि प्राप्त भएको टोकन नम्बर (Application Number) यहाँ राखेर सरकारी सर्भरमा विवरण खोज्नुहोस्।</p>
+        
+        <div style="display: flex; gap: 10px; max-width: 600px; flex-wrap: wrap;">
+            <input type="text" id="govTokenNumber" placeholder="टोकन नम्बर यहाँ टाइप गर्नुहोस् (उदा: 1234567)" class="box-input" style="flex: 1; font-size: 14px; padding: 10px; min-width: 250px;">
+            <button onclick="trackGovToken()" style="background: #0057b8; color: white; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 14px;">विवरण खोज्नुहोस् (Track)</button>
+        </div>
+    </div>
     
     <div class="services-grid" id="mainDashboard">
         <div class="card"><h3>१. जन्म दर्ता फाराम</h3><p>(अनुसूची-२)</p><button class="btn-open" onclick="showForm('birthForm')">फाराम खोल्नुहोस्</button></div>
@@ -112,9 +122,6 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </table>
     </div>
 
-    <!-- ========================================================================
-         १. जन्म दर्ता फाराम (COMPLETE GOVT MATRIX)
-         ======================================================================== -->
     <div id="birthForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-२<br>(नियम ५ सँग सम्बन्धित)</p>
@@ -159,10 +166,10 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
                 <td colspan="2">जन्म मिति (साल-महिना-गते): वि.सं. मा <input type="text" style="width:150px;" id="b_s_dob_bs"> ई.सं. मा <input type="text" style="width:150px;" id="b_s_dob_ad"></td>
             </tr>
             <tr>
-                <td colspan="2">शिशु जन्मेको ठाउँ: <input type="checkbox" id="b_s_pl_home"> घर &nbsp; <input type="checkbox" id="b_s_pl_inst"> स्वास्थ्य-संस्था &nbsp; <input type="checkbox" id="b_s_pl_hosp"> अस्पताल &nbsp; <input type="checkbox" id="b_s_pl_oth"> अन्य</td>
+                <td colspan="2">शिशु जन्मेको ठाउँ: <input type="checkbox" id="b_s_pl_home"> घर &nbsp; <input type="checkbox" id="b_s_pl_inst"> health-संस्था &nbsp; <input type="checkbox" id="b_s_pl_hosp"> अस्पताल &nbsp; <input type="checkbox" id="b_s_pl_oth"> अन्य</td>
             </tr>
             <tr>
-                <td colspan="2">शिशु जन्मदा मद्दत गर्ने व्यक्ति: <input type="checkbox" id="b_s_hlp_fam"> घरको मानिस &nbsp; <input type="checkbox" id="b_s_hlp_sud"> सुडिनी &nbsp; <input type="checkbox" id="b_s_hlp_nur"> नर्स &nbsp; <input type="checkbox" id="b_s_hlp_hw"> स्वास्थ्य कर्मी &nbsp; <input type="checkbox" id="b_s_hlp_doc"> डाक्टर &nbsp; <input type="checkbox" id="b_s_hlp_oth"> अन्य</td>
+                <td colspan="2">शिशु जन्मदा मद्दत गर्ने व्यक्ति: <input type="checkbox" id="b_s_hlp_fam"> घरको मानिस &nbsp; <input type="checkbox" id="b_s_hlp_sud"> सुडिनी &nbsp; <input type="checkbox" id="b_s_hlp_nur"> नर्स &nbsp; <input type="checkbox" id="b_s_hlp_hw"> health कर्मी &nbsp; <input type="checkbox" id="b_s_hlp_doc"> डाक्टर &nbsp; <input type="checkbox" id="b_s_hlp_oth"> अन्य</td>
             </tr>
             <tr>
                 <td>लिङ्ग: <input type="checkbox" id="b_s_g_m"> पुरुष &nbsp; <input type="checkbox" id="b_s_g_f"> महिला &nbsp; <input type="checkbox" id="b_s_g_o"> अन्य</td>
@@ -197,7 +204,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr><th style="width:24%">विवरण शीर्षक</th><th style="width:38%">बाबुको विवरण</th><th style="width:38%">आमाको विवरण</th></tr>
             <tr><td>नाम</td><td><input type="text" class="nepali-preeti" id="b_f_name"></td><td><input type="text" class="nepali-preeti" id="b_m_name"></td></tr>
             <tr><td>थर</td><td><input type="text" class="nepali-preeti" id="b_f_thar"></td><td><input type="text" class="nepali-preeti" id="b_m_thar"></td></tr>
-            <tr><td>पूра नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="b_f_en"></td><td><input type="text" style="text-transform:uppercase;" id="b_m_en"></td></tr>
+            <tr><td>पूरा नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="b_f_en"></td><td><input type="text" style="text-transform:uppercase;" id="b_m_en"></td></tr>
             <tr><td colspan="3" style="background:#f9f9f9; font-weight:bold; text-align:center;">स्थायी ठेगाना</td></tr>
             <tr><td>जिल्ला</td><td><input type="text" class="nepali-preeti" id="b_f_jilla"></td><td><input type="text" class="nepali-preeti" id="b_m_jilla"></td></tr>
             <tr><td>गा.वि.स./न.पा.</td><td><input type="text" class="nepali-preeti" id="b_f_gapa"></td><td><input type="text" class="nepali-preeti" id="b_m_gapa"></td></tr>
@@ -206,7 +213,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr><td>गाउँ / टोल</td><td><input type="text" class="nepali-preeti" id="b_f_toll"></td><td><input type="text" class="nepali-preeti" id="b_m_toll"></td></tr>
             <tr><td>घर नं.</td><td><input type="text" id="b_f_hn"></td><td><input type="text" id="b_m_hn"></td></tr>
             <tr><td>शिशु जन्मदाको उमेर</td><td><input type="text" id="b_f_age"></td><td><input type="text" id="b_m_age"></td></tr>
-            <tr><td>जन्म भएको देश</td><td><input type="text" class="nepali-preeti" id="b_f_cntry"></td><td><input type="text" class="nepali-preeti" id="b_m_cntry"></td></tr>
+            <tr><td>जन्म ocurrido को देश</td><td><input type="text" class="nepali-preeti" id="b_f_cntry"></td><td><input type="text" class="nepali-preeti" id="b_m_cntry"></td></tr>
             <tr><td>नागरिकता लिएको देश</td><td><input type="text" class="nepali-preeti" id="b_f_cit_cntry"></td><td><input type="text" class="nepali-preeti" id="b_m_cit_cntry"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text" id="b_f_cit_no"></td><td><input type="text" id="b_m_cit_no"></td></tr>
             <tr><td>प्रमाणपत्र जारी मिति</td><td><input type="text" id="b_f_cit_dt"></td><td><input type="text" id="b_m_cit_dt"></td></tr>
@@ -245,9 +252,6 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
-    <!-- ========================================================================
-         २. मृत्यु दर्ता फाराम (COMPLETE GOVT MATRIX)
-         ======================================================================== -->
     <div id="deathForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-१<br>(नियम ५ सँग सम्बन्धित)</p>
@@ -336,7 +340,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         <div class="section-head">६. सूचकको विवरण (यसमा लेखिएको विवरण साँचो हो...)</div>
         <table class="form-table">
             <tr><td>नाम: <input type="text" class="nepali-preeti" id="d_rep_nm"></td><td>थर: <input type="text" class="nepali-preeti" id="d_rep_th"></td></tr>
-            <tr><td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="d_rep_en"></td></tr>
+            <tr><td colspan="2">पूра नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="d_rep_en"></td></tr>
             <tr><td colspan="2">मृतकसँगको नाता: <input type="text" class="nepali-preeti" id="d_rep_rel"></td></tr>
             <tr><td colspan="2"><b>ठेगाना:</b> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="d_rep_dis"> गा.वि.स./न.पा.: <input type="text" class="nepali-preeti" style="width:120px;" id="d_rep_gp"> वडा नं: <input type="text" style="width:40px;" id="d_rep_wd"> सडक: <input type="text" class="nepali-preeti" style="width:100px;" id="d_rep_rd"> टोल: <input type="text" class="nepali-preeti" style="width:100px;" id="d_rep_tl"> घर नं: <input type="text" style="width:60px;" id="d_rep_hn"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं. (स्वदेशी भएमा)</td><td><input type="text" id="d_rep_cit_no"></td></tr>
@@ -357,9 +361,6 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
-    <!-- ========================================================================
-         ३. विवाह दर्ता फाराम (COMPLETE GOVT MATRIX)
-         ======================================================================== -->
     <div id="marriageForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-४<br>(नियम ५ सँग सम्बन्धित)</p>
@@ -481,9 +482,6 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
-    <!-- ========================================================================
-         ४. बसाई सराई फाराम (COMPLETE GOVT MATRIX)
-         ======================================================================== -->
     <div id="migrationForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-६<br>(नियम ५ सँग सम्बन्धित)</p>
@@ -559,25 +557,15 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
                 </tr>
             </thead>
             <tbody>
-                <!-- Row 1 -->
                 <tr><td>१</td><td><input type="text" id="r1_c1"></td><td><input type="text" class="nepali-preeti" id="r1_c2"><br><input type="text" id="r1_c2_en"></td><td><input type="text" id="r1_c3"></td><td><input type="text" class="nepali-preeti" id="r1_c4"></td><td><input type="text" style="width:40px;" id="r1_c5"></td><td><input type="text" id="r1_c6"></td><td><input type="text" id="r1_c7"></td><td><input type="text" class="nepali-preeti" id="r1_c8"></td></tr>
-                <!-- Row 2 -->
                 <tr><td>२</td><td><input type="text" id="r2_c1"></td><td><input type="text" class="nepali-preeti" id="r2_c2"><br><input type="text" id="r2_c2_en"></td><td><input type="text" id="r2_c3"></td><td><input type="text" class="nepali-preeti" id="r2_c4"></td><td><input type="text" style="width:40px;" id="r2_c5"></td><td><input type="text" id="r2_c6"></td><td><input type="text" id="r2_c7"></td><td><input type="text" class="nepali-preeti" id="r2_c8"></td></tr>
-                <!-- Row 3 -->
                 <tr><td>३</td><td><input type="text" id="r3_c1"></td><td><input type="text" class="nepali-preeti" id="r3_c2"><br><input type="text" id="r3_c2_en"></td><td><input type="text" id="r3_c3"></td><td><input type="text" class="nepali-preeti" id="r3_c4"></td><td><input type="text" style="width:40px;" id="r3_c5"></td><td><input type="text" id="r3_c6"></td><td><input type="text" id="r3_c7"></td><td><input type="text" class="nepali-preeti" id="r3_c8"></td></tr>
-                <!-- Row 4 -->
                 <tr><td>४</td><td><input type="text" id="r4_c1"></td><td><input type="text" class="nepali-preeti" id="r4_c2"><br><input type="text" id="r4_c2_en"></td><td><input type="text" id="r4_c3"></td><td><input type="text" class="nepali-preeti" id="r4_c4"></td><td><input type="text" style="width:40px;" id="r4_c5"></td><td><input type="text" id="r4_c6"></td><td><input type="text" id="r4_c7"></td><td><input type="text" class="nepali-preeti" id="r4_c8"></td></tr>
-                <!-- Row 5 -->
                 <tr><td>५</td><td><input type="text" id="r5_c1"></td><td><input type="text" class="nepali-preeti" id="r5_c2"><br><input type="text" id="r5_c2_en"></td><td><input type="text" id="r5_c3"></td><td><input type="text" class="nepali-preeti" id="r5_c4"></td><td><input type="text" style="width:40px;" id="r5_c5"></td><td><input type="text" id="r5_c6"></td><td><input type="text" id="r5_c7"></td><td><input type="text" class="nepali-preeti" id="r5_c8"></td></tr>
-                <!-- Row 6 -->
                 <tr><td>६</td><td><input type="text" id="r6_c1"></td><td><input type="text" class="nepali-preeti" id="r6_c2"><br><input type="text" id="r6_c2_en"></td><td><input type="text" id="r6_c3"></td><td><input type="text" class="nepali-preeti" id="r6_c4"></td><td><input type="text" style="width:40px;" id="r6_c5"></td><td><input type="text" id="r6_c6"></td><td><input type="text" id="r6_c7"></td><td><input type="text" class="nepali-preeti" id="r6_c8"></td></tr>
-                <!-- Row 7 -->
                 <tr><td>७</td><td><input type="text" id="r7_c1"></td><td><input type="text" class="nepali-preeti" id="r7_c2"><br><input type="text" id="r7_c2_en"></td><td><input type="text" id="r7_c3"></td><td><input type="text" class="nepali-preeti" id="r7_c4"></td><td><input type="text" style="width:40px;" id="r7_c5"></td><td><input type="text" id="r7_c6"></td><td><input type="text" id="r7_c7"></td><td><input type="text" class="nepali-preeti" id="r7_c8"></td></tr>
-                <!-- Row 8 -->
                 <tr><td>८</td><td><input type="text" id="r8_c1"></td><td><input type="text" class="nepali-preeti" id="r8_c2"><br><input type="text" id="r8_c2_en"></td><td><input type="text" id="r8_c3"></td><td><input type="text" class="nepali-preeti" id="r8_c4"></td><td><input type="text" style="width:40px;" id="r8_c5"></td><td><input type="text" id="r8_c6"></td><td><input type="text" id="r8_c7"></td><td><input type="text" class="nepali-preeti" id="r8_c8"></td></tr>
-                <!-- Row 9 -->
-                <tr><td>९</td><td><input type="text" id="r9_c1"></td><td><input type="text" class="nepali-preeti" id="r9_c2"><br><input type="text" id="r9_c2_en"></td><td><input type="text" id="r9_c3"></td><td><input type="text" class="nepali-preeti" id="r9_c4"></td><td><input type="text" style="width:40px;" id="r9_c5"></td><td><input type="text" id="r9_c6"></td><td><input type="text" id="r9_c7"></td><td><input type="text" class="nepali-preeti" id="r9_c8"></td></tr>
-                <!-- Row 10 -->
+                <tr><td>९</td><td><input type="text" id="r9_c1"></td><td><input type="text" class="nepali-preeti" id="r9_c2"><br><input type="text" id="r9_c2_en"></td><td><input type="text" id="r9_c3"></td><td><input type="text" class="nepali-preeti" id="r9_c4"></td><td><input type="text" style="width:40px;" id="r9_c5"></td><td><input type="text" id="r9_c6"></td><td><input type="text" id="r9_c7"></td><td><input type="text" class="nepali-preeti" id="r8_c8"></td></tr>
                 <tr><td>१०</td><td><input type="text" id="r10_c1"></td><td><input type="text" class="nepali-preeti" id="r10_c2"><br><input type="text" id="r10_c2_en"></td><td><input type="text" id="r10_c3"></td><td><input type="text" class="nepali-preeti" id="r10_c4"></td><td><input type="text" style="width:40px;" id="r10_c5"></td><td><input type="text" id="r10_c6"></td><td><input type="text" id="r10_c7"></td><td><input type="text" class="nepali-preeti" id="r10_c8"></td></tr>
             </tbody>
         </table>
@@ -605,9 +593,6 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
     </div>
 
-    <!-- ========================================================================
-         ५. सम्बन्ध बिच्छेद फाराम (COMPLETE GOVT MATRIX)
-         ======================================================================== -->
     <div id="divorceForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-५<br>(नियम ५ सँग सम्बन्धित)</p>
@@ -711,16 +696,32 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 <footer id="contact" style="background:#333; color:white; text-align:center; padding:30px; margin-top:40px; font-size:14px;">
     <p>Pin2 Kumar Photocopy & Online Works</p>
     <p>Susta-02, Kudiya, Near Ward No. 2 Office, Nawalparasi | Contact: 9817488390</p>
-    <a href="https://wa.me/9779817488390" target="_blank" class="whatsapp-footer-btn">💬 Contact Us </a>
+    <a href="https://wa.me/9779817488390" target="_blank" class="whatsapp-footer-btn">💬 WhatsApp Us Direct</a>
 </footer>
 
 <script>
 document.addEventListener("DOMContentLoaded", loadSavedFormsList);
 
+// 🎯 GOVERNMENT SYSTEM TOKEN TRACKER FUNCTION
+function trackGovToken() {
+    const token = document.getElementById('govTokenNumber').value.trim();
+    if (!token) {
+        alert("कृपया पहिले टोकन नम्बर राख्नुहोस् ! (Please enter a token number first)");
+        return;
+    }
+    
+    // नेपाल सरकारको आधिकारिक अनलाइन दर्ता पोर्टल लिंक (टोकन ट्र्याकिङ यूआरएल)
+    const targetUrl = `https://public.donidcr.gov.np/BirthRegistrationMain/BirthRegistrationMain?p=ob%2BACF2rxqibas5x2EjHVA%3D%3D&token=${encodeURIComponent(token)}`;
+    
+    // नयाँ सुरक्षित ट्याबमा विन्डो खोल्ने
+    window.open(targetUrl, '_blank');
+}
+
 function showForm(id) {
     document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
     document.getElementById('mainDashboard').style.display = 'none';
     document.getElementById('savedListSection').style.display = 'none';
+    document.getElementById('tokenTrackerSection').style.display = 'none';
     document.getElementById(id).style.display = 'block';
     window.scrollTo(0, 0);
 }
@@ -729,6 +730,7 @@ function closeForm() {
     document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
     document.getElementById('mainDashboard').style.display = 'grid';
     document.getElementById('savedListSection').style.display = 'block';
+    document.getElementById('tokenTrackerSection').style.display = 'block';
     loadSavedFormsList();
 }
 
@@ -741,7 +743,6 @@ function printThisForm(formId) {
     }
 }
 
-// 🎯 HIGH FIDELITY STORAGE CONTROLLER
 function saveFormData(formId, formType, nameInputId) {
     const formContainer = document.getElementById(formId);
     const inputs = formContainer.querySelectorAll('input[type="text"], textarea');
