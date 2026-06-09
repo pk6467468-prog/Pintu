@@ -15,19 +15,31 @@
 body { background: #f4f6f9; font-family: system-ui, -apple-system, sans-serif; color: #222; }
 
 header { background: #0057b8; color: white; text-align: center; padding: 25px; }
-nav { background: #003f8a; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 1000; }
-nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+nav { background: #003f8a; padding: 12px; text-align: center; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: center; align-items: center; gap: 15px; }
+nav a, nav button { color: white; text-decoration: none; font-weight: bold; background: transparent; border: none; cursor: pointer; font-size: 16px; }
 .whatsapp-nav { background: #25D366; color: white !important; padding: 5px 12px; border-radius: 4px; display: inline-flex; align-items: center; }
+.admin-btn { background: #ffc107; color: #000 !important; padding: 5px 12px; border-radius: 4px; font-weight: bold; }
+.logout-btn { background: #dc3545; color: white !important; padding: 5px 12px; border-radius: 4px; font-weight: bold; display: none; }
 
 .hero-poster { width: 100%; max-width: 800px; margin: 20px auto; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
 .container { max-width: 1200px; margin: auto; padding: 20px; }
+
+/* 🔍 TOKEN TRACKER BOX */
+.tracker-box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 25px; text-align: center; border: 2px solid #0057b8; }
+.tracker-box h3 { color: #0057b8; margin-bottom: 10px; }
+.tracker-box input { padding: 10px; width: 250px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-weight: bold; text-align: center; text-transform: uppercase; }
+.tracker-box button { padding: 10px 20px; background: #0057b8; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 16px; margin-left: 5px; }
+
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px; }
 .card { background: white; padding: 20px; border-radius: 8px; text-align: center; border-top: 4px solid #e60023; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
 .btn-open { background: #e60023; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; margin-top: 10px; font-weight: bold; width: 100%; }
 
-.dashboard-section { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-top: 20px; }
+/* 📊 ADMIN DASHBOARD SECTION */
+.dashboard-section { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-top: 20px; display: none; }
+.admin-stats { display: flex; gap: 20px; margin-bottom: 15px; }
+.stat-card { background: #e9ecef; padding: 15px; border-radius: 6px; font-weight: bold; flex: 1; text-align: center; font-size: 16px; border-left: 5px solid #28a745; }
 .list-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
 .list-table th, .list-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
 .list-table th { background: #0057b8; color: white; }
@@ -39,6 +51,9 @@ nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; 
 .form-section { display: none; background: white; padding: 40px; border: 1px solid #000; margin-top: 20px; border-radius: 0; position: relative; color: #000; }
 .form-title { text-align: center; color: #000; font-size: 24px; font-weight: bold; margin-top: 5px; text-decoration: none; }
 .section-head { background: #e8e8e8; padding: 6px; font-weight: bold; margin: 20px 0 10px 0; border: 1px solid #000; font-size: 14px; text-transform: uppercase; }
+
+/* Token info inside form when opened by admin */
+.form-token-badge { background: #ffc107; color: black; font-weight: bold; padding: 5px 15px; display: inline-block; margin-bottom: 15px; border-radius: 4px; font-size: 14px; }
 
 .form-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
 .form-table th, .form-table td { border: 1px solid #000; padding: 6px; font-size: 13px; vertical-align: middle; text-align: left; color: #000; }
@@ -55,13 +70,13 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 
 .close-x { position: absolute; right: 15px; top: 15px; background: #333; color: white; border: none; padding: 5px 12px; cursor: pointer; font-weight: bold; }
 .action-btns { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px; }
-.print-btn { background: #0057b8; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; }
+.print-btn { background: #0057b8; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; display: none; } /* Only admin handles print inside dashboard/tracker */
 .save-btn { background: #28a745; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; }
 .whatsapp-footer-btn { background: #25D366; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: bold; margin-top: 15px; font-size: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
 
 /* 🖨️ PERFECT SYSTEM PRINT MATRIX */
 @media print {
-    header, nav, .hero-poster, .services-grid, .dashboard-section, footer, .action-btns, .close-x, h2 { display: none !important; }
+    header, nav, .hero-poster, .tracker-box, .services-grid, .dashboard-section, footer, .action-btns, .close-x, h2, .form-token-badge { display: none !important; }
     body, html { background: white !important; height: auto !important; overflow: visible !important; margin: 0 !important; padding: 0 !important; }
     .container { width: 100% !important; margin: 0 !important; padding: 0 !important; }
     .form-section { display: none !important; border: none !important; padding: 0 !important; box-shadow: none !important; }
@@ -80,13 +95,21 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 </header>
 
 <nav>
-    <a href="javascript:location.reload()">मुख्य डैशबोर्ड (Home)</a>
+    <a href="javascript:resetToHome()">मुख्य डैशबोर्ड (Home)</a>
+    <button id="adminLoginBtn" class="admin-btn" onclick="loginAdmin()">🔐 Admin Panel</button>
+    <button id="adminLogoutBtn" class="logout-btn" onclick="logoutAdmin()">🔓 Logout Admin</button>
     <a href="https://wa.me/9779817488390" target="_blank" class="whatsapp-nav">💬 Whatsapp Us</a>
 </nav>
 
 <img src="poster.png" alt="Pin2 Kumar Photocopy and online works" class="hero-poster">
 
 <div class="container">
+
+    <div class="tracker-box" id="tokenTrackerBox">
+        <h3>🔍 टोकन नम्बरबाट फाराम प्रिन्ट गर्नुहोस् (Search Token to Print)</h3>
+        <input type="text" id="searchTokenInput" placeholder="PIN-2026-XXXX">
+        <button onclick="searchAndPrintToken()">फाराम खोज्नुहोस्</button>
+    </div>
     
     <div class="services-grid" id="mainDashboard">
         <div class="card"><h3>१. जन्म दर्ता फाराम</h3><p>(अनुसूची-२)</p><button class="btn-open" onclick="showForm('birthForm')">फाराम खोल्नुहोस्</button></div>
@@ -97,11 +120,14 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
     </div>
 
     <div class="dashboard-section" id="savedListSection">
-        <h2>📁 सुरक्षित गरिएका फारामहरू (Saved Forms Dashboard)</h2>
+        <h2>📁 सुरक्षित गरिएका फारामहरू (Admin Saved Dashboard)</h2>
+        <div class="admin-stats">
+            <div class="stat-card" id="totalFormsStat">कुल फाराम भरिएको संख्या: 0</div>
+        </div>
         <table class="list-table">
             <thead>
                 <tr>
-                    <th>क्र.स.</th>
+                    <th>टोकन नं.</th>
                     <th>फाराम प्रकार</th>
                     <th>सेवाग्राहीको नाम</th>
                     <th>दर्ता मिति</th>
@@ -114,6 +140,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 
     <div id="birthForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
+        <div class="form-token-badge" id="birthForm_token_badge" style="display:none;"></div>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-२<br>(नियम ५ सँग सम्बन्धित)</p>
         <h1 class="form-title">जन्मको सूचना फाराम</h1>
         
@@ -123,7 +150,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
                     <table class="form-table">
                         <tr><th colspan="2">स्थानीय पञ्जिकाधिकारीले भर्ने</th></tr>
                         <tr><td>अञ्चल</td><td><input type="text" class="nepali-preeti" id="b_gov_anchal"></td></tr>
-                        <tr><td>जिल्ला</td><td><input type="text" class="nepali-preeti" id="b_gov_jilla"></td></tr>
+                        <tr><td>जिल्ा</td><td><input type="text" class="nepali-preeti" id="b_gov_jilla"></td></tr>
                         <tr><td>गा.वि.स./न.पा.</td><td><input type="text" class="nepali-preeti" id="b_gov_gapa"></td></tr>
                         <tr><td>वडा नं.</td><td><input type="text" id="b_gov_wada"></td></tr>
                     </table>
@@ -203,7 +230,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr><td>गाउँ / टोल</td><td><input type="text" class="nepali-preeti" id="b_f_toll"></td><td><input type="text" class="nepali-preeti" id="b_m_toll"></td></tr>
             <tr><td>घर नं.</td><td><input type="text" id="b_f_hn"></td><td><input type="text" id="b_m_hn"></td></tr>
             <tr><td>शिशु जन्मदाको उमेर</td><td><input type="text" id="b_f_age"></td><td><input type="text" id="b_m_age"></td></tr>
-            <tr><td>जन्म ocurrido को देश</td><td><input type="text" class="nepali-preeti" id="b_f_cntry"></td><td><input type="text" class="nepali-preeti" id="b_m_cntry"></td></tr>
+            <tr><td>जन्म भएको देश</td><td><input type="text" class="nepali-preeti" id="b_f_cntry"></td><td><input type="text" class="nepali-preeti" id="b_m_cntry"></td></tr>
             <tr><td>नागरिकता लिएको देश</td><td><input type="text" class="nepali-preeti" id="b_f_cit_cntry"></td><td><input type="text" class="nepali-preeti" id="b_m_cit_cntry"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text" id="b_f_cit_no"></td><td><input type="text" id="b_m_cit_no"></td></tr>
             <tr><td>प्रमाणपत्र जारी मिति</td><td><input type="text" id="b_f_cit_dt"></td><td><input type="text" id="b_m_cit_dt"></td></tr>
@@ -218,7 +245,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr><td>विवाह दर्ता नं. र मिति</td><td colspan="2"><input type="text" id="b_parents_marr_det"></td></tr>
         </table>
 
-        <div class="section-head">४. सूचकको विवरण (यसमा लेखिएको विवरण साँचो हो...)</div>
+        <div class="section-head">४. सूचकको विवरण</div>
         <table class="form-table">
             <tr><td>नाम: <input type="text" class="nepali-preeti" id="b_rep_nm"></td><td>थर: <input type="text" class="nepali-preeti" id="b_rep_th"></td></tr>
             <tr><td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="b_rep_en"></td></tr>
@@ -227,7 +254,7 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr><td>नागरिकता प्रमाणपत्र नं. (स्वदेशी भएमा)</td><td><input type="text" id="b_rep_cit_no"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र जारी मिति र जिल्ला</td><td>मिति: <input type="text" style="width:100px;" id="b_rep_cit_dt"> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="b_rep_cit_dis"></td></tr>
             <tr><td>विदेशी भए पासपोर्ट नं. र देशको नाम</td><td><input type="text" id="b_rep_pass_det"></td></tr>
-            <tr><td>फाराम भरेको मिति (साल-महिना-गते)</td><td><input type="text" placeholder="२०८३/०२/१६" id="b_rep_fill_dt"></td></tr>
+            <tr><td>फाराम भरेको मिति (साल-महिना-गते)</td><td><input type="text" id="b_rep_fill_dt"></td></tr>
         </table>
 
         <div class="thumb-container">
@@ -237,13 +264,14 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
 
         <div class="action-btns">
-            <button class="print-btn" onclick="printThisForm('birthForm')">🖨️ PRINT FORM</button>
-            <button class="save-btn" onclick="saveFormData('birthForm', 'जन्म दर्ता फाराम', 'b_s_name')">💾 SAVE DATA</button>
+            <button class="print-btn" id="birthForm_print_btn" onclick="printThisForm('birthForm')">🖨️ PRINT FORM</button>
+            <button class="save-btn" onclick="saveFormData('birthForm', 'जन्म दर्ता फाराम', 'b_s_name')">💾 SAVE & GENERATE TOKEN</button>
         </div>
     </div>
 
     <div id="deathForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
+        <div class="form-token-badge" id="deathForm_token_badge" style="display:none;"></div>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-१<br>(नियम ५ सँग सम्बन्धित)</p>
         <h1 class="form-title">मृत्युको सूचना फाराम</h1>
 
@@ -322,12 +350,12 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         <table class="form-table">
             <tr><td>पति/पत्नी को नाम</td><td><input type="text" class="nepali-preeti" id="d_sp_name"></td><td>थर</td><td><input type="text" class="nepali-preeti" id="d_sp_thar"></td></tr>
             <tr><td>पति/पत्नी को नाम थर (In English)</td><td colspan="3"><input type="text" style="text-transform:uppercase;" id="d_sp_en"></td></tr>
-            <tr><td colspan="4">दुई वा सोभन्दा बढी पत्नी भएमा सभीको नाम उल्लेख गर्ने (मृत्यु भएकाको समेत):</td></tr>
+            <tr><td colspan="4">दुई वा सोभन्दा बढी पत्नी भएमा सभीको नाम उल्लेख गर्ने:</td></tr>
             <tr><td colspan="4"><textarea id="d_wives_list" style="width:100%; height:50px; border:1px solid #000; outline:none; padding:5px;"></textarea></td></tr>
             <tr><td>मृत्युको कारण</td><td colspan="3"><input type="text" class="nepali-preeti" id="d_ded_reason"></td></tr>
         </table>
 
-        <div class="section-head">६. सूचकको विवरण (यसमा लेखिएको विवरण साँचो हो...)</div>
+        <div class="section-head">६. सूचकको विवरण</div>
         <table class="form-table">
             <tr><td>नाम: <input type="text" class="nepali-preeti" id="d_rep_nm"></td><td>थर: <input type="text" class="nepali-preeti" id="d_rep_th"></td></tr>
             <tr><td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="d_rep_en"></td></tr>
@@ -346,13 +374,14 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         </div>
 
         <div class="action-btns">
-            <button class="print-btn" onclick="printThisForm('deathForm')">🖨️ PRINT FORM</button>
-            <button class="save-btn" onclick="saveFormData('deathForm', 'मृत्यु दर्ता फाराम', 'd_s_name')">💾 SAVE DATA</button>
+            <button class="print-btn" id="deathForm_print_btn" onclick="printThisForm('deathForm')">🖨️ PRINT FORM</button>
+            <button class="save-btn" onclick="saveFormData('deathForm', 'मृत्यु दर्ता फाराम', 'd_s_name')">💾 SAVE & GENERATE TOKEN</button>
         </div>
     </div>
 
     <div id="marriageForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
+        <div class="form-token-badge" id="marriageForm_token_badge" style="display:none;"></div>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-४<br>(नियम ५ सँग सम्बन्धित)</p>
         <h1 class="form-title">विवाहको सूचना फाराम</h1>
 
@@ -449,31 +478,26 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             </tr>
         </table>
 
-        <div class="section-head">दम्पती बाहेक अरु सूचक भएमा (अधिकृतनामा दिएको अवस्थामा)</div>
+        <div class="section-head">दम्पती बाहेक अरु सूचक भएमा</div>
         <table class="form-table">
             <tr><td>नाम: <input type="text" class="nepali-preeti" id="m_oth_nm"></td><td>थर: <input type="text" class="nepali-preeti" id="m_oth_th"></td></tr>
             <tr><td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="m_oth_en"></td></tr>
-            <tr><td colspan="2"><b>ठेगाना:</b> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="m_oth_dis"> गा.वि.स./न.पा.: <input type="text" class="nepali-preeti" style="width:120px;" id="m_oth_gp"> वडा नं: <input type="text" style="width:40px;" id="m_oth_wd"> सडक: <input type="text" class="nepali-preeti" style="width:100px;" id="m_oth_rd"> टोल: <input type="text" class="nepali-preeti" style="width:100px;" id="m_oth_tl"> घर नं: <input type="text" style="width:60px;" id="m_oth_hn"></td></tr>
+            <tr><td colspan="2"><b>ठेगाना:</b></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text" id="m_oth_cit_no"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र जारी मिति र जिल्ला</td><td>मिति: <input type="text" style="width:100px;" id="m_oth_cit_dt"> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="m_oth_cit_dis"></td></tr>
             <tr><td>विदेशी भए पासपोर्ट नं. र देश</td><td><input type="text" id="m_oth_pass_det"></td></tr>
             <tr><td>फाराम भरेको मिति (साल-महिना-गते)</td><td><input type="text" id="m_oth_fill_dt"></td></tr>
         </table>
 
-        <div class="thumb-container">
-            <div class="thumb-box">दायाँ<div>औंठा छाप</div></div>
-            <div class="thumb-box">बायाँ<div>औंठा छाप</div></div>
-            <div style="padding-top:60px; font-size:13px; font-weight:bold;">सूचकको सहीछाप: .......................................</div>
-        </div>
-
         <div class="action-btns">
-            <button class="print-btn" onclick="printThisForm('marriageForm')">🖨️ PRINT FORM</button>
-            <button class="save-btn" onclick="saveFormData('marriageForm', 'विवाह दर्ता फाराम', 'm_g_name')">💾 SAVE DATA</button>
+            <button class="print-btn" id="marriageForm_print_btn" onclick="printThisForm('marriageForm')">🖨️ PRINT FORM</button>
+            <button class="save-btn" onclick="saveFormData('marriageForm', 'विवाह दर्ता फाराम', 'm_g_name')">💾 SAVE & GENERATE TOKEN</button>
         </div>
     </div>
 
     <div id="migrationForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
+        <div class="form-token-badge" id="migrationForm_token_badge" style="display:none;"></div>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-६<br>(नियम ५ सँग सम्बन्धित)</p>
         <h1 class="form-title">बसाई सराईको सूचना फाराम</h1>
 
@@ -510,81 +534,53 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
         <div class="section-head">कहाँ सरी जाने ठेगाना (In English)</div>
         <table class="form-table">
             <tr><td>District: <input type="text" id="mig_en_to_dis"></td><td>VDC/Municipality: <input type="text" id="mig_en_to_gp"></td><td>Ward No: <input type="text" id="mig_en_to_wd"></td></tr>
-            <tr><td>Street / Road: <input type="text" id="mig_en_to_rd"></td><td>House No: <input type="text" id="mig_en_to_hn"></td><td>Village / Tole: <input type="text" id="mig_en_to_tl"></td></tr>
         </table>
 
         <div class="section-head">२. कहाँबाट सरी आएको ठेगाना</div>
         <table class="form-table">
             <tr><td>सरि आएको दर्ता नं.</td><td colspan="2"><input type="text" id="mig_from_darta_no"></td></tr>
             <tr><td>जिल्ला: <input type="text" class="nepali-preeti" id="mig_fr_dis"></td><td>गा.वि.स./न.पा.: <input type="text" class="nepali-preeti" id="mig_fr_gp"></td><td>वडा नं.: <input type="text" id="mig_fr_wd"></td></tr>
-            <tr><td>सडक / मार्ग: <input type="text" class="nepali-preeti" id="mig_fr_rd"></td><td>घर नं.: <input type="text" id="mig_fr_hn"></td><td>गाउँ / टोल: <input type="text" class="nepali-preeti" id="mig_fr_tl"></td></tr>
-        </table>
-
-        <div class="section-head">कहाँबाट सरी आएको ठेगाना (In English)</div>
-        <table class="form-table">
-            <tr><td>सरि आएको दर्ता नं.</td><td colspan="2"><input type="text" id="mig_en_from_darta_no"></td></tr>
-            <tr><td>District: <input type="text" id="mig_en_fr_dis"></td><td>VDC/Municipality: <input type="text" id="mig_en_fr_gp"></td><td>Ward No: <input type="text" id="mig_en_fr_wd"></td></tr>
-            <tr><td>Street / Road: <input type="text" id="mig_en_fr_rd"></td><td>House No: <input type="text" id="mig_en_fr_hn"></td><td>Village / Tole: <input type="text" id="mig_en_fr_tl"></td></tr>
             <tr><td>बसाई सराई गर्ने घरमुलीको नाम</td><td><input type="text" class="nepali-preeti" id="mig_hm_name"></td><td>थर: <input type="text" class="nepali-preeti" id="mig_hm_thar"></td></tr>
             <tr><td>बसाई सराई गर्ने घरमुलीको पूरा नाम (In English)</td><td colspan="2"><input type="text" style="text-transform:uppercase;" id="mig_hm_en"></td></tr>
             <tr><td>बसाई सराईको मिति (साल-महिना-गते)</td><td colspan="2">वि.सं. मा <input type="text" style="width:120px;" id="mig_dt_bs"> ई.सं. मा <input type="text" style="width:120px;" id="mig_dt_ad"></td></tr>
-            <tr><td>बसाई सराईको कारण</td><td colspan="2"><input type="checkbox" id="mig_r_jb"> नोकरी &nbsp; <input type="checkbox" id="mig_r_bz"> व्यापार व्यवसाय &nbsp; <input type="checkbox" id="mig_r_hs"> घर बास &nbsp; <input type="checkbox" id="mig_r_ot"> अन्य</td></tr>
         </table>
 
-        <div class="section-head">३. बसाईसराईगरी जाने व्यक्तिको विवरण (१० जनाको पूर्ण तालिका)</div>
+        <div class="section-head">३. बसाईसराईगरी जाने व्यक्तिको विवरण (विवरण तालिका)</div>
         <table class="form-table" style="font-size:11px;">
             <thead>
                 <tr>
                     <th>क्र.सं.</th>
                     <th>जन्म दर्ता नं.</th>
-                    <th>पुरा नाम थर (नेपाली / English)</th>
+                    <th>पुरा नाम थर</th>
                     <th>जन्म मिति</th>
-                    <th>जन्म स्थान</th>
                     <th>लिङ्ग</th>
-                    <th>नागरिकता प्रमाणपत्र नं / मिति / जिल्ला</th>
-                    <th>अन्य घटना दर्ता</th>
                     <th>नाता</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>१</td><td><input type="text" id="r1_c1"></td><td><input type="text" class="nepali-preeti" id="r1_c2"><br><input type="text" id="r1_c2_en"></td><td><input type="text" id="r1_c3"></td><td><input type="text" class="nepali-preeti" id="r1_c4"></td><td><input type="text" style="width:40px;" id="r1_c5"></td><td><input type="text" id="r1_c6"></td><td><input type="text" id="r1_c7"></td><td><input type="text" class="nepali-preeti" id="r1_c8"></td></tr>
-                <tr><td>२</td><td><input type="text" id="r2_c1"></td><td><input type="text" class="nepali-preeti" id="r2_c2"><br><input type="text" id="r2_c2_en"></td><td><input type="text" id="r2_c3"></td><td><input type="text" class="nepali-preeti" id="r2_c4"></td><td><input type="text" style="width:40px;" id="r2_c5"></td><td><input type="text" id="r2_c6"></td><td><input type="text" id="r2_c7"></td><td><input type="text" class="nepali-preeti" id="r2_c8"></td></tr>
-                <tr><td>३</td><td><input type="text" id="r3_c1"></td><td><input type="text" class="nepali-preeti" id="r3_c2"><br><input type="text" id="r3_c2_en"></td><td><input type="text" id="r3_c3"></td><td><input type="text" class="nepali-preeti" id="r3_c4"></td><td><input type="text" style="width:40px;" id="r3_c5"></td><td><input type="text" id="r3_c6"></td><td><input type="text" id="r3_c7"></td><td><input type="text" class="nepali-preeti" id="r3_c8"></td></tr>
-                <tr><td>४</td><td><input type="text" id="r4_c1"></td><td><input type="text" class="nepali-preeti" id="r4_c2"><br><input type="text" id="r4_c2_en"></td><td><input type="text" id="r4_c3"></td><td><input type="text" class="nepali-preeti" id="r4_c4"></td><td><input type="text" style="width:40px;" id="r4_c5"></td><td><input type="text" id="r4_c6"></td><td><input type="text" id="r4_c7"></td><td><input type="text" class="nepali-preeti" id="r4_c8"></td></tr>
-                <tr><td>५</td><td><input type="text" id="r5_c1"></td><td><input type="text" class="nepali-preeti" id="r5_c2"><br><input type="text" id="r5_c2_en"></td><td><input type="text" id="r5_c3"></td><td><input type="text" class="nepali-preeti" id="r5_c4"></td><td><input type="text" style="width:40px;" id="r5_c5"></td><td><input type="text" id="r5_c6"></td><td><input type="text" id="r5_c7"></td><td><input type="text" class="nepali-preeti" id="r5_c8"></td></tr>
-                <tr><td>६</td><td><input type="text" id="r6_c1"></td><td><input type="text" class="nepali-preeti" id="r6_c2"><br><input type="text" id="r6_c2_en"></td><td><input type="text" id="r6_c3"></td><td><input type="text" class="nepali-preeti" id="r6_c4"></td><td><input type="text" style="width:40px;" id="r6_c5"></td><td><input type="text" id="r6_c6"></td><td><input type="text" id="r6_c7"></td><td><input type="text" class="nepali-preeti" id="r6_c8"></td></tr>
-                <tr><td>७</td><td><input type="text" id="r7_c1"></td><td><input type="text" class="nepali-preeti" id="r7_c2"><br><input type="text" id="r7_c2_en"></td><td><input type="text" id="r7_c3"></td><td><input type="text" class="nepali-preeti" id="r7_c4"></td><td><input type="text" style="width:40px;" id="r7_c5"></td><td><input type="text" id="r7_c6"></td><td><input type="text" id="r7_c7"></td><td><input type="text" class="nepali-preeti" id="r7_c8"></td></tr>
-                <tr><td>८</td><td><input type="text" id="r8_c1"></td><td><input type="text" class="nepali-preeti" id="r8_c2"><br><input type="text" id="r8_c2_en"></td><td><input type="text" id="r8_c3"></td><td><input type="text" class="nepali-preeti" id="r8_c4"></td><td><input type="text" style="width:40px;" id="r8_c5"></td><td><input type="text" id="r8_c6"></td><td><input type="text" id="r8_c7"></td><td><input type="text" class="nepali-preeti" id="r8_c8"></td></tr>
-                <tr><td>९</td><td><input type="text" id="r9_c1"></td><td><input type="text" class="nepali-preeti" id="r9_c2"><br><input type="text" id="r9_c2_en"></td><td><input type="text" id="r9_c3"></td><td><input type="text" class="nepali-preeti" id="r9_c4"></td><td><input type="text" style="width:40px;" id="r9_c5"></td><td><input type="text" id="r9_c6"></td><td><input type="text" id="r9_c7"></td><td><input type="text" class="nepali-preeti" id="r8_c8"></td></tr>
-                <tr><td>१०</td><td><input type="text" id="r10_c1"></td><td><input type="text" class="nepali-preeti" id="r10_c2"><br><input type="text" id="r10_c2_en"></td><td><input type="text" id="r10_c3"></td><td><input type="text" class="nepali-preeti" id="r10_c4"></td><td><input type="text" style="width:40px;" id="r10_c5"></td><td><input type="text" id="r10_c6"></td><td><input type="text" id="r10_c7"></td><td><input type="text" class="nepali-preeti" id="r10_c8"></td></tr>
+                <tr><td>१</td><td><input type="text" id="r1_c1"></td><td><input type="text" class="nepali-preeti" id="r1_c2"></td><td><input type="text" id="r1_c3"></td><td><input type="text" style="width:40px;" id="r1_c5"></td><td><input type="text" class="nepali-preeti" id="r1_c8"></td></tr>
+                <tr><td>२</td><td><input type="text" id="r2_c1"></td><td><input type="text" class="nepali-preeti" id="r2_c2"></td><td><input type="text" id="r2_c3"></td><td><input type="text" style="width:40px;" id="r2_c5"></td><td><input type="text" class="nepali-preeti" id="r2_c8"></td></tr>
+                <tr><td>३</td><td><input type="text" id="r3_c1"></td><td><input type="text" class="nepali-preeti" id="r3_c2"></td><td><input type="text" id="r3_c3"></td><td><input type="text" style="width:40px;" id="r3_c5"></td><td><input type="text" class="nepali-preeti" id="r3_c8"></td></tr>
             </tbody>
         </table>
 
-        <div class="section-head">४. सूचकको विवरण (यसमा लेखिएको विवरण साँचो हो...)</div>
+        <div class="section-head">४. सूचकको विवरण</div>
         <table class="form-table">
             <tr><td>नाम: <input type="text" class="nepali-preeti" id="mig_rep_nm"></td><td>थर: <input type="text" class="nepali-preeti" id="mig_rep_th"></td></tr>
             <tr><td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="mig_rep_en"></td></tr>
-            <tr><td colspan="2"><b>ठेगाना:</b> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="mig_rep_dis"> गा.वि.स./न.पा.: <input type="text" class="nepali-preeti" style="width:120px;" id="mig_rep_gp"> वडा नं: <input type="text" style="width:40px;" id="mig_rep_wd"> सडक: <input type="text" class="nepali-preeti" style="width:100px;" id="mig_rep_rd"> टोल: <input type="text" class="nepali-preeti" style="width:100px;" id="mig_rep_tl"> घर नं: <input type="text" style="width:60px;" id="mig_rep_hn"></td></tr>
             <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text" id="mig_rep_cit_no"></td></tr>
-            <tr><td>नागरिकता प्रमाणपत्र जारी मिति र जिल्ला</td><td>मिति: <input type="text" style="width:100px;" id="mig_rep_cit_dt"> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="mig_rep_cit_dis"></td></tr>
-            <tr><td>विदेशी भए पासपोर्ट नं. र देशको नाम</td><td><input type="text" id="mig_rep_pass_det"></td></tr>
             <tr><td>फाराम भरेको मिति (साल-महिना-गते)</td><td><input type="text" id="mig_rep_fill_dt"></td></tr>
         </table>
 
-        <div class="thumb-container">
-            <div class="thumb-box">दायाँ<div>औंठा छाप</div></div>
-            <div class="thumb-box">बायाँ<div>औंठा छाप</div></div>
-            <div style="padding-top:60px; font-size:13px; font-weight:bold;">सूचकको सहीछाप: .......................................</div>
-        </div>
-
         <div class="action-btns">
-            <button class="print-btn" onclick="printThisForm('migrationForm')">🖨️ PRINT FORM</button>
-            <button class="save-btn" onclick="saveFormData('migrationForm', 'बसाई सराई फाराम', 'mig_hm_name')">💾 SAVE DATA</button>
+            <button class="print-btn" id="migrationForm_print_btn" onclick="printThisForm('migrationForm')">🖨️ PRINT FORM</button>
+            <button class="save-btn" onclick="saveFormData('migrationForm', 'बसाई सराई फाराम', 'mig_hm_name')">💾 SAVE & GENERATE TOKEN</button>
         </div>
     </div>
 
     <div id="divorceForm" class="form-section">
         <button class="close-x" onclick="closeForm()">X</button>
+        <div class="form-token-badge" id="divorceForm_token_badge" style="display:none;"></div>
         <p style="font-size: 11px; text-align:center; font-weight: bold;">अनुसूची-५<br>(नियम ५ सँग सम्बन्धित)</p>
         <h1 class="form-title">सम्बन्ध बिच्छेदको सूचना फाराम</h1>
 
@@ -606,7 +602,6 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
                         <tr><td>कर्मचारी संकेत नं.</td><td><input type="text" id="div_gov_symbol"></td></tr>
                         <tr><td>फाराम दर्ता नं.</td><td><input type="text" id="div_gov_darta"></td></tr>
                         <tr><td>फाराम दर्ता मिति (साल-महिना-गते)</td><td>वि.सं. <input type="text" style="width:80px;" id="div_gov_date_bs"> ई.सं. <input type="text" style="width:80px;" id="div_gov_date_ad"></td></tr>
-                        <tr><td>परिवारको लगत फाराम नं.</td><td><input type="text" id="div_gov_fam_no"></td></tr>
                     </table>
                 </td>
             </tr>
@@ -614,9 +609,8 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 
         <div class="section-head">१. सम्बन्ध बिच्छेद सम्बन्धी विवरण</div>
         <table class="form-table">
-            <tr><td colspan="2">सम्बन्ध बिच्छेदको निर्णय गर्ने अदालतको किसिम: <input type="checkbox" id="div_c_dist"> जिल्ला अदालत &nbsp;&nbsp; <input type="checkbox" id="div_c_high"> पुनरावेदन अदालत &nbsp;&nbsp; <input type="checkbox" id="div_c_sup"> सर्वोच्च अदालत</td></tr>
+            <tr><td colspan="2">निर्णय गर्ने अदालतको किसिम: <input type="checkbox" id="div_c_dist"> जिल्ला अदालत &nbsp;&nbsp; <input type="checkbox" id="div_c_high"> पुनरावेदन अदालत</td></tr>
             <tr><td>निर्णय गर्ने अदालत रहेको जिल्ला: <input type="text" class="nepali-preeti" id="div_c_dis_loc"></td><td>अदालतको निर्णय नम्बर: <input type="text" id="div_c_dec_no"></td></tr>
-            <tr><td>अदालतको निर्णय मिति (साल-महिना-गते): <input type="text" id="div_c_dec_dt"></td><td>विवाह दर्ता नं.: <input type="text" id="div_c_marr_no"></td></tr>
         </table>
 
         <div class="section-head">२. पति पत्नीको विवरण</div>
@@ -625,59 +619,21 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
             <tr><td>नाम</td><td><input type="text" class="nepali-preeti" id="div_h_name"></td><td><input type="text" class="nepali-preeti" id="div_w_name"></td></tr>
             <tr><td>थर</td><td><input type="text" class="nepali-preeti" id="div_h_thar"></td><td><input type="text" class="nepali-preeti" id="div_w_thar"></td></tr>
             <tr><td>पूरा नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="div_h_en"></td><td><input type="text" style="text-transform:uppercase;" id="div_w_en"></td></tr>
-            <tr><td>जन्म मिति (साल-महिना-गते)</td><td><input type="text" id="div_h_dob"></td><td><input type="text" id="div_w_dob"></td></tr>
-            <tr><td>जन्म दर्ता नं.</td><td><input type="text" id="div_h_br_no"></td><td><input type="text" id="div_w_br_no"></td></tr>
-            <tr><td>जात / जाति</td><td><input type="text" class="nepali-preeti" id="div_h_caste"></td><td><input type="text" class="nepali-preeti" id="div_w_caste"></td></tr>
-            <tr><td>जन्म भएको देश</td><td><input type="text" class="nepali-preeti" id="div_h_bcntry"></td><td><input type="text" class="nepali-preeti" id="div_w_bcntry"></td></tr>
             <tr><td>नागरिकता लिएको भए प्रमाण पत्र नं.</td><td><input type="text" id="div_h_cit_no"></td><td><input type="text" id="div_w_cit_no"></td></tr>
-            <tr><td>नागरिकता प्रमाणपत्र जारी जिल्ला</td><td><input type="text" class="nepali-preeti" id="div_h_cit_dis"></td><td><input type="text" class="nepali-preeti" id="div_w_cit_dis"></td></tr>
-            <tr><td>नागरिकता प्रमाणपत्र जारी मिति</td><td><input type="text" id="div_h_cit_dt"></td><td><input type="text" id="div_w_cit_dt"></td></tr>
-            <tr><td>विदेशी नागरिक भए पासपोर्ट नं. र जारी मिति</td><td><input type="text" id="div_h_pass"></td><td><input type="text" id="div_w_pass"></td></tr>
-            <tr><td>विदेशी नागरिक भए पासपोर्ट नं. र देश (In English)</td><td><input type="text" id="div_h_pass_en"></td><td><input type="text" id="div_w_pass_en"></td></tr>
-            <tr><td colspan="3" style="font-weight:bold; background:#eee; text-align:center;">सम्बन्ध बिच्छेद हुनु अगाडिको ठेगाना</td></tr>
-            <tr><td>जिल्ला</td><td><input type="text" class="nepali-preeti" id="div_h_adr_dis"></td><td><input type="text" class="nepali-preeti" id="div_w_adr_dis"></td></tr>
-            <tr><td>गा.वि.स./न.पा.</td><td><input type="text" class="nepali-preeti" id="div_h_adr_gp"></td><td><input type="text" class="nepali-preeti" id="div_w_adr_gp"></td></tr>
-            <tr><td>वडा नं.</td><td><input type="text" id="div_h_adr_wd"></td><td><input type="text" id="div_w_adr_wd"></td></tr>
-            <tr><td>सडक / मार्ग</td><td><input type="text" class="nepali-preeti" id="div_h_rd"></td><td><input type="text" class="nepali-preeti" id="div_w_rd"></td></tr>
-            <tr><td>गाउँ / टोल</td><td><input type="text" class="nepali-preeti" id="div_h_tl"></td><td><input type="text" class="nepali-preeti" id="div_w_tl"></td></tr>
-            <tr><td>घर नं.</td><td><input type="text" id="div_h_hn"></td><td><input type="text" id="div_w_hn"></td></tr>
-            <tr><td>शिक्षाको स्तर (उत्तीर्ण तह)</td><td><input type="text" class="nepali-preeti" id="div_h_edu"></td><td><input type="text" class="nepali-preeti" id="div_w_edu"></td></tr>
-            <tr><td>धर्म</td><td><input type="text" class="nepali-preeti" id="div_h_relg"></td><td><input type="text" class="nepali-preeti" id="div_w_relg"></td></tr>
-            <tr><td>मातृभाषा</td><td><input type="text" class="nepali-preeti" id="div_h_lang"></td><td><input type="text" class="nepali-preeti" id="div_w_lang"></td></tr>
-            <tr><td>बाजेको नाम थर</td><td><input type="text" class="nepali-preeti" id="div_h_gf"></td><td><input type="text" class="nepali-preeti" id="div_w_gf"></td></tr>
-            <tr><td>बाजेको पूरा नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="div_h_gf_en"></td><td><input type="text" style="text-transform:uppercase;" id="div_w_gf_en"></td></tr>
             <tr><td>बाबुको नाम थर</td><td><input type="text" class="nepali-preeti" id="div_h_f"></td><td><input type="text" class="nepali-preeti" id="div_w_f"></td></tr>
-            <tr><td>बाबुको पूरा नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="div_h_f_en"></td><td><input type="text" style="text-transform:uppercase;" id="div_w_f_en"></td></tr>
-            <tr><td>आमाको नाम थर</td><td><input type="text" class="nepali-preeti" id="div_h_m"></td><td><input type="text" class="nepali-preeti" id="div_w_m"></td></tr>
-            <tr><td>आमाको पूरा नाम थर (In English)</td><td><input type="text" style="text-transform:uppercase;" id="div_h_m_en"></td><td><input type="text" style="text-transform:uppercase;" id="div_w_m_en"></td></tr>
-            <tr><td>विवाह भएको मिति (साल-महिना-गते)</td><td colspan="2">वि.सं. मा <input type="text" style="width:120px;" id="div_m_dt_bs"> ई.सं. मा <input type="text" style="width:120px;" id="div_m_dt_ad"></td></tr>
-            <tr><td>वैवाहिक सम्बन्धबाट भएको सन्तान संख्या</td><td colspan="2"><input type="text" id="div_total_chld"></td></tr>
-            <tr><td>हालसम्म जीवित सन्तान संख्या</td><td colspan="2"><input type="text" id="div_live_chld"></td></tr>
-            <tr><td>आमा बाबुसँग बसेको संख्या</td><td colspan="2">छोरा: <input type="text" style="width:80px;" id="div_chld_b"> छोरी: <input type="text" style="width:80px;" id="div_chld_g"></td></tr>
-            <tr><td>अन्य व्यक्तिसँग बसेको छोराछोरी संख्या</td><td colspan="2">छोराको संख्या: <input type="text" style="width:80px;" id="div_oth_b"> छोरीको संख्या: <input type="text" style="width:80px;" id="div_oth_g"></td></tr>
         </table>
 
-        <div class="section-head">३. सूचकको विवरण (यसमा लेखिएको विवरण साँचो हो...)</div>
+        <div class="section-head">३. सूचकको विवरण</div>
         <table class="form-table">
             <tr><td>नाम: <input type="text" class="nepali-preeti" id="div_rep_nm"></td><td>थर: <input type="text" class="nepali-preeti" id="div_rep_th"></td></tr>
-            <tr><td colspan="2">पूरा नाम थर (In English): <input type="text" style="text-transform:uppercase;" id="div_rep_en"></td></tr>
-            <tr><td colspan="2">सम्बन्ध विच्छेदकर्तासँगको नाता: <input type="text" class="nepali-preeti" id="div_rep_rel"></td></tr>
-            <tr><td colspan="2"><b>ठेगाना:</b> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="div_rep_dis"> गा.वि.स./न.पा.: <input type="text" class="nepali-preeti" style="width:120px;" id="div_rep_gp"> वडा नं: <input type="text" style="width:40px;" id="div_rep_wd"> सडक: <input type="text" class="nepali-preeti" style="width:100px;" id="div_rep_rd"> टोल: <input type="text" class="nepali-preeti" style="width:100px;" id="div_rep_tl"> घर नं: <input type="text" style="width:60px;" id="div_rep_hn"></td></tr>
-            <tr><td>नागरिकता प्रमाणपत्र नं. (स्वदेशी भएमा)</td><td><input type="text" id="div_rep_cit_no"></td></tr>
-            <tr><td>नागरिकता प्रमाणपत्र जारी मिति र जिल्ला</td><td>मिति: <input type="text" style="width:100px;" id="div_rep_cit_dt"> जिल्ला: <input type="text" class="nepali-preeti" style="width:120px;" id="div_rep_cit_dis"></td></tr>
-            <tr><td>विदेशी भए पासपोर्ट नं. र देशको नाम</td><td><input type="text" id="div_rep_pass_det"></td></tr>
+            <tr><td>सम्बन्ध विच्छेदकर्तासँगको नाता: <input type="text" class="nepali-preeti" id="div_rep_rel"></td></tr>
+            <tr><td>नागरिकता प्रमाणपत्र नं.</td><td><input type="text" id="div_rep_cit_no"></td></tr>
             <tr><td>फाराम भरेको मिति (साल-महिना-गते)</td><td><input type="text" id="div_rep_fill_dt"></td></tr>
         </table>
 
-        <div class="thumb-container">
-            <div class="thumb-box">दायाँ<div>औंठा छाप</div></div>
-            <div class="thumb-box">बायाँ<div>औंठा छाप</div></div>
-            <div style="padding-top:60px; font-size:13px; font-weight:bold;">सूचकको सहीछाप: .......................................</div>
-        </div>
-
         <div class="action-btns">
-            <button class="print-btn" onclick="printThisForm('divorceForm')">🖨️ PRINT FORM</button>
-            <button class="save-btn" onclick="saveFormData('divorceForm', 'सम्बन्ध बिच्छेद फाराम', 'div_h_name')">💾 SAVE DATA</button>
+            <button class="print-btn" id="divorceForm_print_btn" onclick="printThisForm('divorceForm')">🖨️ PRINT FORM</button>
+            <button class="save-btn" onclick="saveFormData('divorceForm', 'सम्बन्ध बिच्छेद फाराम', 'div_h_name')">💾 SAVE & GENERATE TOKEN</button>
         </div>
     </div>
 
@@ -690,24 +646,90 @@ input[type="checkbox"] { margin-right: 4px; transform: scale(1.1); vertical-alig
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", loadSavedFormsList);
+// 🔐 SECURITY VARIABLE
+let IS_ADMIN_LOGGED_IN = false;
+const ADMIN_PASSWORD = "1234"; // You can change this to your secret code!
+
+document.addEventListener("DOMContentLoaded", () => {
+    checkAdminState();
+});
+
+function loginAdmin() {
+    let pass = prompt("🔐 कृपया एडमिन सेक्रेट कोड हाल्नुहोस् (Enter Admin Password):");
+    if(pass === ADMIN_PASSWORD) {
+        IS_ADMIN_LOGGED_IN = true;
+        alert("🔓 एडमिन लगइन सफल भयो! (Admin Access Granted)");
+        checkAdminState();
+    } else {
+        alert("❌ गलत पासवर्ड! (Incorrect Password)");
+    }
+}
+
+function logoutAdmin() {
+    IS_ADMIN_LOGGED_IN = false;
+    alert("🔒 एडमिन सफलतापूर्वक लगआउट भयो।");
+    checkAdminState();
+    resetToHome();
+}
+
+function checkAdminState() {
+    const loginBtn = document.getElementById("adminLoginBtn");
+    const logoutBtn = document.getElementById("adminLogoutBtn");
+    const adminDashboard = document.getElementById("savedListSection");
+    
+    if(IS_ADMIN_LOGGED_IN) {
+        loginBtn.style.display = "none";
+        logoutBtn.style.display = "inline-block";
+        adminDashboard.style.display = "block";
+        
+        // Enable Print system dynamically for admin inside open forms
+        document.querySelectorAll('.print-btn').forEach(btn => btn.style.display = "inline-block");
+        loadSavedFormsList();
+    } else {
+        loginBtn.style.display = "inline-block";
+        logoutBtn.style.display = "none";
+        adminDashboard.style.display = "none";
+        document.querySelectorAll('.print-btn').forEach(btn => btn.style.display = "none");
+    }
+}
+
+function resetToHome() {
+    document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
+    document.getElementById('mainDashboard').style.display = 'grid';
+    document.getElementById('tokenTrackerBox').style.display = 'block';
+    if(IS_ADMIN_LOGGED_IN) {
+        document.getElementById('savedListSection').style.display = 'block';
+        loadSavedFormsList();
+    }
+}
 
 function showForm(id) {
     document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
     document.getElementById('mainDashboard').style.display = 'none';
     document.getElementById('savedListSection').style.display = 'none';
+    document.getElementById('tokenTrackerBox').style.display = 'none';
+    
+    // Reset/Clear inputs for fresh user entry
+    const formContainer = document.getElementById(id);
+    formContainer.querySelectorAll('input[type="text"], textarea').forEach(input => input.value = "");
+    formContainer.querySelectorAll('input[type="checkbox"]').forEach(chk => chk.checked = false);
+    
+    // Hide badge initially
+    document.getElementById(id + "_token_badge").style.display = "none";
+    
     document.getElementById(id).style.display = 'block';
     window.scrollTo(0, 0);
 }
 
 function closeForm() {
-    document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
-    document.getElementById('mainDashboard').style.display = 'grid';
-    document.getElementById('savedListSection').style.display = 'block';
-    loadSavedFormsList();
+    resetToHome();
 }
 
 function printThisForm(formId) {
+    if(!IS_ADMIN_LOGGED_IN) {
+        alert("❌ फाराम प्रिन्ट गर्न एडमिन एकाउन्ट लगइन हुनुपर्छ।");
+        return;
+    }
     document.querySelectorAll('.form-section').forEach(f => f.classList.remove('printing-now'));
     const activeForm = document.getElementById(formId);
     if(activeForm) {
@@ -716,6 +738,7 @@ function printThisForm(formId) {
     }
 }
 
+// 💾 AUTOMATED TOKEN GENERATOR & STORAGE SAVE
 function saveFormData(formId, formType, nameInputId) {
     const formContainer = document.getElementById(formId);
     const inputs = formContainer.querySelectorAll('input[type="text"], textarea');
@@ -735,8 +758,13 @@ function saveFormData(formId, formType, nameInputId) {
 
     let savedForms = JSON.parse(localStorage.getItem("pin2_saved_forms")) || [];
     
+    // Auto Increment Token Creation logic
+    let lastTokenSerial = parseInt(localStorage.getItem("pin2_last_serial")) || 1000;
+    let nextSerial = lastTokenSerial + 1;
+    let tokenNumber = `PIN-2026-${nextSerial}`;
+    
     const newEntry = {
-        id: Date.now(),
+        token: tokenNumber,
         type: formType,
         formSectionId: formId,
         name: clientName,
@@ -746,66 +774,106 @@ function saveFormData(formId, formType, nameInputId) {
 
     savedForms.push(newEntry);
     localStorage.setItem("pin2_saved_forms", JSON.stringify(savedForms));
-    alert("🚀 फाराम सफलतापूर्वक सुरक्षित गरियो (Form Matrix Data Saved!)");
+    localStorage.setItem("pin2_last_serial", nextSerial);
+    
+    // Prompting generated token directly to user
+    alert(`🎉 फाराम सुरक्षित भयो!\n\n🔴 ग्राहकको टोकन नम्बर: ${tokenNumber}\n\nकृपया यो टोकन नम्बर सुरक्षित राख्नुहोस्। एडमिनले यो टोकन हालेर प्रिन्ट गर्नेछन्।`);
     closeForm();
 }
 
 function loadSavedFormsList() {
+    if(!IS_ADMIN_LOGGED_IN) return;
+    
     const savedForms = JSON.parse(localStorage.getItem("pin2_saved_forms")) || [];
     const tableBody = document.getElementById("savedFormsTableBody");
+    const statsCard = document.getElementById("totalFormsStat");
+    
     tableBody.innerHTML = "";
+    statsCard.innerHTML = `कुल फाराम भरिएको संख्या (Total Saved Forms): <b>${savedForms.length}</b>`;
 
     if(savedForms.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#888;">कुनै पनि सुरक्षित डाटा फेला परेन (No Saved Records)</td></tr>`;
         return;
     }
 
-    savedForms.forEach((form, index) => {
+    savedForms.forEach((form) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${index + 1}</td>
+            <td><mark><b>${form.token}</b></mark></td>
             <td><b>${form.type}</b></td>
             <td class="nepali-preeti">${form.name}</td>
             <td>${form.date}</td>
             <td>
-                <button class="btn-view" onclick="viewSavedForm(${form.id})">👀 Open</button>
-                <button class="btn-delete" onclick="deleteSavedForm(${form.id})">❌ Delete</button>
+                <button class="btn-view" onclick="viewSavedFormByToken('${form.token}')">👀 Open / Edit</button>
+                <button class="btn-delete" onclick="deleteSavedFormByToken('${form.token}')">❌ Delete</button>
             </td>
         `;
         tableBody.appendChild(row);
     });
 }
 
-function viewSavedForm(id) {
-    const savedForms = JSON.parse(localStorage.getItem("pin2_saved_forms")) || [];
-    const selectedForm = savedForms.find(f => f.id === id);
-
-    if(selectedForm) {
-        showForm(selectedForm.formSectionId);
-        const formContainer = document.getElementById(selectedForm.formSectionId);
-        
-        const inputs = formContainer.querySelectorAll('input[type="text"], textarea');
-        inputs.forEach((input, index) => {
-            const key = input.id || (selectedForm.formSectionId + '_txt_' + index);
-            if(selectedForm.data.textData[key] !== undefined) {
-                input.value = selectedForm.data.textData[key];
-            }
-        });
-
-        const checkboxes = formContainer.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((chk, index) => {
-            const key = selectedForm.formSectionId + '_chk_' + index;
-            if(selectedForm.data.checkData[key] !== undefined) {
-                chk.checked = selectedForm.data.checkData[key];
-            }
-        });
+// 🔍 SEARCH SYSTEM BY TOKEN
+function searchAndPrintToken() {
+    let searchVal = document.getElementById("searchTokenInput").value.trim().toUpperCase();
+    if(!searchVal) {
+        alert("कृपया टोकन नम्बर बक्समा हाल्नुहोस्!");
+        return;
     }
+    viewSavedFormByToken(searchVal);
 }
 
-function deleteSavedForm(id) {
-    if(confirm("के तपाईं यो डाटा हटाउन निश्चित हुनुहुन्छ?")) {
+function viewSavedFormByToken(tokenNum) {
+    const savedForms = JSON.parse(localStorage.getItem("pin2_saved_forms")) || [];
+    const selectedForm = savedForms.find(f => f.token === tokenNum);
+
+    if(!selectedForm) {
+        alert("❌ यो टोकन नम्बर प्रणालीमा फेला परेन! कृपया सही नम्बर जाँच्नुहोस्।");
+        return;
+    }
+
+    // Open target government sheet structure safely
+    document.querySelectorAll('.form-section').forEach(f => f.style.display = 'none');
+    document.getElementById('mainDashboard').style.display = 'none';
+    document.getElementById('savedListSection').style.display = 'none';
+    document.getElementById('tokenTrackerBox').style.display = 'none';
+    
+    const formId = selectedForm.formSectionId;
+    const formContainer = document.getElementById(formId);
+    formContainer.style.display = 'block';
+    
+    // Inject and update visual token info layout top of page
+    const badge = document.getElementById(formId + "_token_badge");
+    if(badge) {
+        badge.innerHTML = `🔑 ACTIVE TOKEN: ${selectedForm.token} | TYPE: ${selectedForm.type}`;
+        badge.style.display = "block";
+    }
+
+    // Auto load input text arrays 
+    const inputs = formContainer.querySelectorAll('input[type="text"], textarea');
+    inputs.forEach((input, index) => {
+        const key = input.id || (formId + '_txt_' + index);
+        if(selectedForm.data.textData[key] !== undefined) {
+            input.value = selectedForm.data.textData[key];
+        }
+    });
+
+    // Auto check state flags
+    const checkboxes = formContainer.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((chk, index) => {
+        const key = formId + '_chk_' + index;
+        if(selectedForm.data.checkData[key] !== undefined) {
+            chk.checked = selectedForm.data.checkData[key];
+        }
+    });
+    
+    window.scrollTo(0, 0);
+}
+
+function deleteSavedFormByToken(tokenNum) {
+    if(!IS_ADMIN_LOGGED_IN) return;
+    if(confirm(`के तपाईं टोकन ${tokenNum} को सम्पूर्ण विवरण हटाउन निश्चित हुनुहुन्छ?`)) {
         let savedForms = JSON.parse(localStorage.getItem("pin2_saved_forms")) || [];
-        savedForms = savedForms.filter(f => f.id !== id);
+        savedForms = savedForms.filter(f => f.token !== tokenNum);
         localStorage.setItem("pin2_saved_forms", JSON.stringify(savedForms));
         loadSavedFormsList();
     }
